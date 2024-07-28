@@ -36,3 +36,83 @@
 | LW R13, R1, 2       | 32'h0020a683        | 000000000010 00000 010 01101 0000011       | 32'h00208681      | 000000100010 00000 010 01100 01100000  |
 | SRL R16, R14, R2    | 32'h0030a123        | 000000000011 00000 010 00001 0100011       | 32'h00271803      | 000000100010 00000 011 00110 01100000  |
 | SLL R15, R1, R2     | 32'h002097b3        | 000000000010 00000 111 01111 0110011       | 32'h00208783      | 000000100010 00000 111 01111 01100000  |
+
+
+
+Task 2
+Instruction 1: ADD R6, R2, R1
+
+
+![ADDR6](https://github.com/user-attachments/assets/9523b401-5a26-4277-92f4-c0dfd0c76d5c)
+
+
+
+Instruction 2: SUB R7, R1, R2
+
+
+
+
+![subr7](https://github.com/user-attachments/assets/5281c4c1-016a-4eb9-8e1b-20754b717716)
+
+
+
+Instruction 3: AND R8, R1, R3
+
+
+
+
+
+
+![andr6](https://github.com/user-attachments/assets/9aab96ba-9846-43df-8388-4fd22c2462db)
+
+
+
+Instruction 4: OR R9, R2, R5
+
+
+
+
+![ORR8](https://github.com/user-attachments/assets/798acce4-fedc-4fb7-bab5-ff0c7c1839bb)
+
+
+
+
+Instruction 5: XOR R10, R1, R4
+
+
+
+
+![XORR8](https://github.com/user-attachments/assets/8362e3bc-2fbb-48e2-97e2-c6b94fbd1cb5)
+
+
+
+
+Instruction 6: SLT R1, R2, R4
+
+
+
+
+
+![SLTR8](https://github.com/user-attachments/assets/93ce019f-1e7c-49b6-a093-b14bd9f850b2)
+
+
+Instruction 7: ADDI R12, R4, 5
+
+
+
+
+![ADDIR12](https://github.com/user-attachments/assets/e8663a74-9148-4372-ad5e-15e730d87b90)
+
+
+
+Instruction 8: BEQ R0, R0, 15
+
+
+
+
+
+![BEQR0](https://github.com/user-attachments/assets/eefb842b-c00c-4227-9bd3-196c350cb496)
+
+
+
+
