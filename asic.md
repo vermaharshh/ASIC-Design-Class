@@ -1,3 +1,80 @@
+LAB 1
+1) Compile a C program of sum from 1 to n natural numbers using gcc compiler.
+
+Step 1: Create a C file named sum1ton.c using leafpad editor.
+
+Step 2: Now write a C program for sum from 1 to n natural numbers and save it,here i kept n=50.
+
+Step 3 : Use gcc compiler to compile the program & run it using ./a.out to observe the output.
+
+
+
+![Screenshot from 2024-07-29 15-55-14](https://github.com/user-attachments/assets/e9f02238-8f67-4404-9439-6dee57d8dd8d)
+
+2) Compile the same program using riscv compiler.
+
+Step 1: Open the code & run it using -O1.
+
+
+
+
+
+![Screenshot from 2024-07-29 15-57-26](https://github.com/user-attachments/assets/43088f0d-8e73-44f4-804e-cc1fce029871)
+
+Step 2: Check for number of instructions in main function. 
+
+
+
+
+
+![Screenshot from 2024-07-29 15-58-56](https://github.com/user-attachments/assets/8a0f37cf-a5f8-4ed5-b92b-79bd26a462a6)
+
+Now we can calculate the number of instructions by subtracting the address of first instruction of main section from address of the first instruction of the next section and divide the result by 4 since each instruction requires 4 memory locations.
+
+No. of instructions = (101bc - 10184)/4 = 56/4 = 14 instructions
+
+Step 3: Now compile using -Ofast: 
+
+
+
+![Screenshot from 2024-07-29 16-00-02](https://github.com/user-attachments/assets/9ff0b1f4-c069-4f49-8f50-4c2e24787675)
+
+No. of instructions = (100dc - 100b0)/4 = 44/4 = 11 instructions
+
+
+LAB 2
+1) Verify the instructions in riscv compiler for sum1ton.c code
+
+Step 1: Verify the output of the C program first using gcc compiler and then using spike simulator for riscv. Output must be same in both cases.
+
+
+
+![Screenshot from 2024-07-29 16-02-01](https://github.com/user-attachments/assets/06f58533-db44-489e-83e1-b8c714b1239f)
+
+Step 2: Open the spike debugger and run the program counter until the first address of the main function.
+
+
+
+
+![Screenshot from 2024-07-29 16-02-46](https://github.com/user-attachments/assets/7834c3e5-5209-4c80-9cac-2df001322aba)
+
+Step 3: Read the initial contents of the register a0 and then press enter to run the instruction.
+
+Step 4: Verify that the instruction is executed properly.
+
+Step 5: Now read the initial contents of sp register & run the next instruction.
+
+
+![Screenshot from 2024-07-29 16-03-36](https://github.com/user-attachments/assets/1b817b39-cf70-4ad6-bea8-4cd8b4048ad0)
+
+Step 6: Using calculator ensure that the difference between initial and final contents of the sp register should be as per the intruction set.
+
+
+![Screenshot from 2024-07-29 16-04-19](https://github.com/user-attachments/assets/234d4c04-54ea-4753-992c-ba4cc6be670f)
+
+
+LAB 3
+
 1) RISC-V Instruction type of Given Instructions
 
 
