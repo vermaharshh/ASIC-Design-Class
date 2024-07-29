@@ -3,7 +3,7 @@ LAB 1
 
 Step 1: Create a C file named sum1ton.c using leafpad editor.
 
-Step 2: Now write a C program for sum from 1 to n natural numbers and save it,here i kept n=50.
+Step 2: write a C program for sum from 1 to n natural numbers and save it,here n is taken as 50 for refernce.
 
 Step 3 : Use gcc compiler to compile the program & run it using ./a.out to observe the output.
 
@@ -29,7 +29,7 @@ Step 2: Check for number of instructions in main function.
 
 ![Screenshot from 2024-07-29 15-58-56](https://github.com/user-attachments/assets/8a0f37cf-a5f8-4ed5-b92b-79bd26a462a6)
 
-Now we can calculate the number of instructions by subtracting the address of first instruction of main section from address of the first instruction of the next section and divide the result by 4 since each instruction requires 4 memory locations.
+we will calculate the number of instructions by subtracting the address of first instruction of main section from address of the first instruction of the next section and divide the result by 4 since each instruction requires 4 memory locations.
 
 No. of instructions = (101bc - 10184)/4 = 56/4 = 14 instructions
 
