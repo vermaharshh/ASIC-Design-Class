@@ -192,4 +192,74 @@ Instruction 8: BEQ R0, R0, 15
 
 
 
+LAB 4
+Task: Compile a C application with GCC and RISC-V GCC
+
+
+Application : Sequence Detector
+Sequence detectors are essential components in digital systems and have a wide range of applications. They are used to detect and identify specific patterns or sequences in binary data streams. 
+
+
+Step 1: C Program
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Function to detect a sequence in a bit stream
+void detectSequence(const char *stream, const char *sequence) {
+    int streamLength = strlen(stream);
+    int sequenceLength = strlen(sequence);
+    
+    // Iterate through the bit stream
+    for (int i = 0; i <= streamLength - sequenceLength; i++) {
+        // Check if the current substring matches the sequence
+        if (strncmp(&stream[i], sequence, sequenceLength) == 0) {
+            printf("Sequence '%s' detected at position %d.\n", sequence, i);
+        }
+    }
+}
+
+int main() {
+    char stream[1024];
+    char sequence[1024];
+    
+    // Read the bit stream
+    printf("Enter the bit stream: ");
+    scanf("%s", stream);
+
+    // Read the sequence to detect
+    printf("Enter the sequence to detect: ");
+    scanf("%s", sequence);
+
+    // Ensure the input strings are valid
+    if (strspn(stream, "01") != strlen(stream) || strspn(sequence, "01") != strlen(sequence)) {
+        printf("Error: Bit stream and sequence must contain only '0' and '1'.\n");
+        return 1;
+    }
+
+    // Detect the sequence in the bit stream
+    detectSequence(stream, sequence);
+
+    return 0;
+}
+
+ 
+```
+
+
+
+Step 2: Compile the program using gcc compiler
+![Screenshot from 2024-08-14 21-45-38](https://github.com/user-attachments/assets/96ec5c83-7f5f-4b8a-b646-08fa459d1e3b)
+
+
+Step 3: Compile the program using risc-v compiler
+![Screenshot from 2024-08-14 21-55-15](https://github.com/user-attachments/assets/d960d898-fe74-4106-a009-47f7f183a477)
+
+
+
+
+
+
+
 
