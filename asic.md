@@ -1,4 +1,6 @@
-LAB 1
+<details>
+<summary> LAB 1 </summary>
+<br>
 1) Compile a C program of sum from 1 to n natural numbers using gcc compiler.
 
 Step 1: Create a C file named sum1ton.c using leafpad editor.
@@ -40,9 +42,10 @@ Step 3: Now compile using -Ofast:
 ![Screenshot from 2024-07-29 16-00-02](https://github.com/user-attachments/assets/9ff0b1f4-c069-4f49-8f50-4c2e24787675)
 
 No. of instructions = (100dc - 100b0)/4 = 44/4 = 11 instructions
-
-
-LAB 2
+</details>
+<details>
+<summary> LAB 2 </summary>
+<br>
 1) Verify the instructions in riscv compiler for sum1ton.c code
 
 Step 1: Verify the output of the C program first using gcc compiler and then using spike simulator for riscv. Output must be same in both cases.
@@ -72,9 +75,11 @@ Step 6: Using calculator ensure that the difference between initial and final co
 
 ![Screenshot from 2024-07-29 16-04-19](https://github.com/user-attachments/assets/234d4c04-54ea-4753-992c-ba4cc6be670f)
 
+</details>
 
-LAB 3
-
+<details>
+<summary> LAB 3 </summary>
+<br>
 1) RISC-V Instruction type of Given Instructions
 
 
@@ -190,9 +195,11 @@ Instruction 8: BEQ R0, R0, 15
 
 ![BEQR0](https://github.com/user-attachments/assets/eefb842b-c00c-4227-9bd3-196c350cb496)
 
+</details>
 
-
-LAB 4
+<details>
+<summary> LAB 4 </summary>
+<br>
 Task: Compile a C application with GCC and RISC-V GCC
 
 
@@ -256,7 +263,7 @@ Step 2: Compile the program using gcc compiler
 Step 3: Compile the program using risc-v compiler
 ![Screenshot from 2024-08-14 21-55-15](https://github.com/user-attachments/assets/d960d898-fe74-4106-a009-47f7f183a477)
 
-
+</details>
 
 
 
