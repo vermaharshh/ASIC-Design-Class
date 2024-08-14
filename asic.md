@@ -262,6 +262,7 @@ Step 2: Compile the program using gcc compiler
 
 Step 3: Compile the program using risc-v compiler
 ![Screenshot from 2024-08-14 21-55-15](https://github.com/user-attachments/assets/d960d898-fe74-4106-a009-47f7f183a477)
+Observation: Output matches for both gcc and risc-v compiler.
 
 </details>
 
