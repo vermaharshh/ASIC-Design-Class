@@ -266,6 +266,12 @@ Observation: Output matches for both gcc and risc-v compiler.
 
 </details>
 
+<details>
+<summary> LAB 5 </summary>
+<br>
+
+</details>
+
 
 
 
