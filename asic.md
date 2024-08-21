@@ -271,6 +271,7 @@ Observation: Output matches for both gcc and risc-v compiler.
 <br>
 
 ## Objective
+To perform the lab sessions of Day 3, 4 and 5 from RISC-V based MYTH Workshop.
 To gradually Implement a risc-v processor, 9-bit output which shows the gradual addition of 1 to 9 using TL- Verilog.
     
 ## TL Verilog ## 
