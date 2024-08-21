@@ -269,6 +269,9 @@ Observation: Output matches for both gcc and risc-v compiler.
 <details>
 <summary> LAB 5 </summary>
 <br>
+
+## Objective
+To Implement a risc-v processor, 9-bit output which shows the gradual addition of 1 to 9 using TL- Verilog.
     
 ## TL Verilog ## 
     
