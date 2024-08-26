@@ -728,12 +728,132 @@ TL-Verilog (Transaction-Level Verilog) is an extension of traditional Verilog th
 
 Use Cases:
 Processor Design, TL-Verilog is particularly useful in designing complex processors, where pipelining and transaction-level abstraction can significantly reduce development time. Digital Signal Processing (DSP): It can also be used in DSP applications where performance and efficiency are crucial. System-on-Chip (SoC) Design: TL-Verilog's ability to handle complex and large-scale designs makes it suitable for SoC design.
+</details>
+
+
+
+<details>
+<summary> LAB 6 </summary>
+<br>
+
+
+## To convert the TLV to verilog using Sandpiper and then use GTKWave pre-synthesis simulation to verify the design.
+
+# Aim
+
+To compare the pre-synthesis simulation outputs of a RISC-V processor using the Icarus Verilog, GTKWave, and Makerchip tools.
+
+# Step-by-Step Procedure:
+
+**Step 1**: Install the Required Packages:
+
+Run the following command to install the necessary packages:
+
+~~~
+sudo apt install make python python3 python3-pip git iverilog gtkwave
+sudo apt-get install python3-venv
+pip3 install pyyaml click sandpiper-saas
+python3 -m venv .venv
+source ~/.venv/bin/activate
+sudo apt install make python python3 python3-pip git iverilog gtkwave docker.io
+sudo chmod 666 /var/run/docker.sock
+~~~
+
+**Step 2**: Now clone the given repository in the home directory :
+
+~~~
+cd ~
+git clone https://github.com/manili/VSDBabySoC.git
+~~~
+
+
+
+![WhatsApp Image 2024-08-26 at 18 31 47](https://github.com/user-attachments/assets/6349da74-1ccd-4141-934e-b195acb598cc)
+
+**Step 3**: Replace the .tlv file in the VSDBabySoC/src/module folder with our RISC-V .tlv file which we want to convert into verilog.
+
+**Step 4**: Change the working directory to VSDBabySoC.
+
+~~~
+cd VSDBabySoC
+~~~
+
+**Step 5**: Translate TL-Verilog to Verilog:
+
+Use the Sandpiper-SaaS compiler to convert the TL-Verilog description of the RISC-V processor into Verilog:
+
+~~~
+sandpiper-saas -i ./src/module/*.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir ./src/module/
+~~~
+
+This command will generate a Verilog file named rvmyth.v in the specified output directory.
 
 
 
 
+![WhatsApp Image 2024-08-26 at 18 31 47(1)](https://github.com/user-attachments/assets/a5484221-29f9-40a4-a1b1-38aabc4e8699)
 
-    
+**Step 6**: Create the Pre-Synthesis Simulation File:
+
+Run the following command to create the pre_synth_sim.vcd file required for simulation:
+~~~
+make pre_synth_sim
+~~~
+
+
+
+
+![WhatsApp Image 2024-08-26 at 18 31 47(2)](https://github.com/user-attachments/assets/2006cfcf-17aa-4188-be1d-c6dc7be86f73)
+
+
+
+This step prepares the simulation environment and generates the necessary .vcd file for visualization.
+
+**Step 7**: Compile and Simulate the RISC-V Design:
+
+Compile and run the simulation using Icarus Verilog with the following command:
+
+~~~
+iverilog -o output/pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module
+~~~
+
+**Step 8**: The result of the simulation (i.e. pre_synth_sim.vcd) will be stored in the output/pre_synth_sim directory. Therefore change the working directory to output.
+
+~~~
+cd output
+./pre_synth_sim.out
+~~~
+
+
+
+![WhatsApp Image 2024-08-26 at 18 31 47(3)](https://github.com/user-attachments/assets/328b9b19-ef32-416e-a224-a9a516d4549a)
+
+**Step 9**: Open the .vcd File in GTKWave:
+
+Use GTKWave to view the waveform of the simulation results:
+
+~~~
+gtkwave pre_synth_sim.vcd
+~~~
+GTKWave will launch, displaying the waveform generated from the pre-synthesis simulation, allowing you to analyze the processor's behavior.
+
+
+![WhatsApp Image 2024-08-26 at 18 31 48](https://github.com/user-attachments/assets/8b1a33d0-0722-40fe-82f2-d8c940885492)
+
+## GTKWave Output Waveform
+
+
+
+![WhatsApp Image 2024-08-26 at 18 31 31](https://github.com/user-attachments/assets/9d0944a5-5e51-4cd5-b4df-d8426eccd3c7)
+
+## Comparison of Output Waveforms
+
+![image](https://github.com/user-attachments/assets/b656bd3d-fc82-4d50-9f19-46dddff21262)
+
+## Conclusion
+
+The waveform outputs from GTKWave and Makerchip matched perfectly, validating the RISC-V processor design's accuracy and consistency. This alignment confirms that the design of RISC-V core processor is robust.
+
 
 
 
