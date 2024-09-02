@@ -853,19 +853,82 @@ GTKWave will launch, displaying the waveform generated from the pre-synthesis si
 ## Conclusion
 
 The waveform outputs from GTKWave and Makerchip matched perfectly, validating the RISC-V processor design's accuracy and consistency. This alignment confirms that the design of RISC-V core processor is robust.
+</details>
+<details>
+<summary> LAB 7 </summary>
+
+## Integration of Peripherals for Converting Digital Output to Analog Output using DAC and PLL
+
+**Aim: Analyzing RISC-V Pre-Synthesis Analog Simulation outputs using Iverilog GTKwave**
+
+-)Phase-Locked Loop (PLL)
+The crystal oscillator on the board generates a clock with a frequency range of 12 to 20 MHz. Since the processor operates at a frequency near 100 MHz, an IP or peripheral is required to boost this low-frequency clock to a higher frequency. The PLL fulfills this role by taking the crystal oscillator clock as input and providing a high-frequency clock output to our RISC-V core. This clock is named `CPU_clk_har_a0`.
+
+A Phase-Locked Loop (PLL) is an electronic circuit that synchronizes an output signal's phase and frequency with a reference signal. It typically consists of three main components:
+
+    Phase Detector: Compares the phase of the reference signal with the output signal and generates an error signal based on the difference.
+
+    Loop Filter: Processes the error signal to smooth it out, reducing noise and improving stability.
+
+    Voltage-Controlled Oscillator (VCO): Adjusts its output frequency based on the filtered error signal to minimize the phase difference.
+
+The PLL is widely used in applications such as clock generation, frequency synthesis, and data recovery in communication systems.
+
+
+-)Digital to Analog Converter (DAC)
+While the processor operates with digital inputs, signals are transmitted and received in analog form. To convert the digital signals from our RISC-V core into analog signals, we utilize the DAC IP.
+
+
+
+A Digital-to-Analog Converter (DAC) is an electronic device that converts digital signals (typically binary) into analog signals (such as voltage or current).
+
+This conversion is crucial in systems where digital data needs to be interpreted by analog devices or for output to be perceived by humans, like in audio and video equipment.
+
+DACs are commonly used in applications like audio playback, video display, and signal processing.
+
+# Commands to Run the `rvmyth.v` File
+
+```bash
+iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module/
+```
+
+```bash
+./pre_synth_sim.out
+```
+
+```bash
+gtkwave pre_synth_sim.vcd
+```
+## Execution Process
+The above process was executed as follows:
+
+
+![sub1](https://github.com/user-attachments/assets/f1018f80-e161-48f9-ae16-020d5431683c)
+
+## Output
+The output generated is shown below:
+
+
+
+![sub](https://github.com/user-attachments/assets/4a791490-6041-4eca-bea5-90e798113124)
+
+
+
+CLK is the output clk signal from the PLL module.
+
+clk_har is the clock used by the RISC-V CPU for the operations.
+
+reset is the reset signal for the RISC-V CPU.
+
+REF is the input clk reference signal to the PLL module.
+
+OUT is the DAC output signal.
 
 
 
 
 
 
-
-
-
-
-
-
-   
 </details>
 
 
