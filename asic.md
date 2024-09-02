@@ -861,6 +861,102 @@ The waveform outputs from GTKWave and Makerchip matched perfectly, validating th
 
 **Aim: Analyzing RISC-V Pre-Synthesis Analog Simulation outputs using Iverilog GTKwave**
 
+Install Yosys
+
+Yosys is a framework for RTL synthesis. Follow these steps to install it:
+
+    Clone the Yosys Repository
+
+    git clone https://github.com/YosysHQ/yosys.git
+    cd yosys
+
+Ensure make is Installed
+
+sudo apt install make
+
+Install Required Dependencies
+
+sudo apt-get install build-essential clang bison flex \
+    libreadline-dev gawk tcl-dev libffi-dev git \
+    graphviz xdot pkg-config python3 libboost-system-dev \
+    libboost-python-dev libboost-filesystem-dev zlib1g-dev
+
+Compile Yosys
+
+make config-gcc
+make
+sudo make install
+
+Verify Yosys Installation
+
+yosys
+
+
+
+
+
+
+
+
+![Screenshot from 2024-09-02 15-04-52](https://github.com/user-attachments/assets/8ab69eb1-eca9-497a-a9e9-d50140a32fd9)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Install IVerilog
+
+IVerilog is a Verilog simulation and synthesis tool. Follow these steps to install it:
+
+    Install IVerilog
+
+    sudo apt-get install iverilog
+
+Verify IVerilog Installation
+
+iverilog -v
+
+
+
+![Screenshot from 2024-09-02 15-02-46](https://github.com/user-attachments/assets/506fb726-cc2c-4201-ab61-68c5a711f474)
+
+
+
+
+
+
+
+Install GTKWave
+
+GTKWave is a waveform viewer used for debugging digital circuits. Follow these steps to install it:
+
+    Update and Install GTKWave
+
+    sudo apt update
+    sudo apt install gtkwave
+
+Verify GTKWave Installation
+
+gtkwave
+
+
+
+![Screenshot from 2024-09-02 15-01-13](https://github.com/user-attachments/assets/8aca125f-2105-4122-bfdc-ff683749b794)
+
+
+
+
 -)Phase-Locked Loop (PLL)
 The crystal oscillator on the board generates a clock with a frequency range of 12 to 20 MHz. Since the processor operates at a frequency near 100 MHz, an IP or peripheral is required to boost this low-frequency clock to a higher frequency. The PLL fulfills this role by taking the crystal oscillator clock as input and providing a high-frequency clock output to our RISC-V core. This clock is named `CPU_clk_har_a0`.
 
