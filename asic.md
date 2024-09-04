@@ -1020,6 +1020,10 @@ REF is the input clk reference signal to the PLL module.
 
 OUT is the DAC output signal.
 
+Th **ZOOMED** OUT image of the waveform is shown below:
+
+![Screenshot from 2024-09-04 18-17-29](https://github.com/user-attachments/assets/78c4fd29-4f9c-4007-84c9-df5813892847)
+
 
 
 
