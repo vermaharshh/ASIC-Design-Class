@@ -1020,7 +1020,7 @@ REF is the input clk reference signal to the PLL module.
 
 OUT is the DAC output signal.
 
-Th **ZOOMED** OUT image of the waveform is shown below:
+The **ZOOMED** OUT image of the waveform is shown below:
 
 ![Screenshot from 2024-09-04 18-17-29](https://github.com/user-attachments/assets/78c4fd29-4f9c-4007-84c9-df5813892847)
 
@@ -1030,6 +1030,475 @@ Th **ZOOMED** OUT image of the waveform is shown below:
 
 
 </details>
+
+<details>
+<summary> LAB 8 </summary>
+<br>
+
+# **RTL design using Verilog with SKY130 Technology**
+## Day 1: Introduction to Verilog RTL Design and Synthesis
+
+In digital circuit design, register-transfer level (RTL) is an abstraction that models a synchronous digital circuit by describing how data flows between hardware registers and how logic operations are applied to these signals. This RTL abstraction is used in HDL (Hardware Description Language) to create high-level models of a circuit, which can then be used to derive lower-level representations and, eventually, the actual hardware layout.
+
+**Simulator:** A tool used to verify the design. In this workshop, we utilize the iverilog tool. Simulation involves generating models that replicate the behavior of the intended device (simulation models) and creating test models to validate the device (test benches). RTL Design: Consists of one or more Verilog files that implement the required design specifications and functionality for the circuit.
+
+Test Bench: The configuration used to provide stimulus (test vectors) to the design in order to verify its functionality.
+HOW SIMULATOR WORKS
+
+Simulator looks for changes on input signals and based on that output is evaluated.
+
+
+
+![Screenshot from 2024-10-20 13-36-14](https://github.com/user-attachments/assets/89bf52ea-60a3-4bc7-ac9b-891d3240d90a)
+
+SIMULATION FLOW
+Simulator continuously checks for changes in the input. If there is an input change, the output is evaluated; else the simulator will never evaluate the output.
+![image](https://github.com/user-attachments/assets/0ab0df32-613b-4754-9fff-046a6aead12b)
+
+# ENVIRONMENT SETUP
+```
+mkdir VLSI 
+cd VLSI
+git clone https://github.com/kunalg123/vsdflow.git
+git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+
+```
+
+
+![DAY1L1](https://github.com/user-attachments/assets/e200cabf-4d01-46ed-bd0a-0b38fd017f12)
+
+Command to view the folder structure of the lab, and list the contents of the directory:
+
+```
+cd sky130RTLDesignAndSynthesisWorkshop
+```
+
+
+![DAY1L1a](https://github.com/user-attachments/assets/ce61d0ab-c247-4968-a99f-5cba8417d509)
+
+There are a number of verilog designs and testbench files for simulation. Run the following commands to simulate the verilog code 'good_mux.v'. The first line will compile and check for syntax errors in both the design and testbench. An executable file 'a.out' is generated on successful compilation. On executing a.out, a vcd file is generated that captures changes in the input and output values. GTKWave is used to view the waveforms
+
+```
+iverilog good_mux.v tb_good_mux.v
+./a.out
+gtkwave tb_good_mux.vcd
+```
+
+
+
+![DAY1L2A](https://github.com/user-attachments/assets/97b0f252-c867-4cfe-88d7-dbd5e8702eff)
+
+We can view the waveform of a simple 2:1 mux which selects the input based on the select line 
+
+![Day1L2](https://github.com/user-attachments/assets/b2fde258-4fac-44e9-83fc-b4ad2e526d8f)
+
+Access Module Files
+
+To view the contents of the file run the following command
+
+```
+$ vim tb_good_mux.v -o good_mux.v
+```
+
+
+
+![DAY1L3](https://github.com/user-attachments/assets/4862b636-b2c4-44fe-b6dc-43ae741576d2)
+
+
+Yosys
+
+Synthesizer is a tool for converting the RTL to Netlist and here we are using the Yosys as the Synthesizer.
+
+A synthesizer plays a key role in digital design by transforming RTL (Register Transfer Level) code into a gate-level netlist. This netlist provides a detailed description of the circuit, outlining the logical gates and their interconnections, and serves as the foundation for later stages like place and route. In this design flow, the synthesizer being used is Yosys, an open-source tool for Verilog HDL synthesis. Yosys applies several optimization techniques to generate an efficient gate-level implementation from the RTL code.
+Block Diagram of Yosys setup :
+
+![image](https://github.com/user-attachments/assets/d37c0e04-9513-4d06-8dfd-cbf3cff9e1dd)
+
+Block Diagram of Systhesis Verification :
+![image](https://github.com/user-attachments/assets/9512a77a-d63c-40de-a797-3d9e0f97a8be)
+
+Logic Systhesis
+
+RTL Design: The design is described using a behavioral representation in Hardware Description Language (HDL) based on the required specifications.
+
+Synthesis: The RTL (Register Transfer Level) code is translated into a gate-level representation. This process converts the design into gates and interconnections, resulting in a file known as the netlist.
+![image](https://github.com/user-attachments/assets/23109d24-c4e8-437f-9475-eb8e662b8f4f)
+
+Liberty(.lib): Its a collection of logical modules. It includes basic logic gates like And, Or, Not, etc... and it contains different variants of the same gate ike 2input, 3input, 4input, slow, fast, medium gates etc. Fast cells are used if only high performance is needed. Slower cells is used to address hold time issues. IThe selection of faster cells in digital circuit design can increase area and power consumption while potentially leading to hold time violations. Conversely, excessive use of slower cells can result in suboptimal performance. The optimal cell selection for synthesis is guided by constraints that balance area, power, and timing requirements.
+
+
+This will invoke/start the yosys
+
+```
+yosys
+```
+
+
+
+![day1l3a](https://github.com/user-attachments/assets/c939df26-3b52-4530-b28c-b1808d3c31ec)
+
+Load the sky130 standard library.
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib      
+```
+Read the design files
+```
+read_verilog good_mux.v        
+```
+Synthesize the top level module
+```
+synth -top good_mux     
+```
+
+
+
+![day1l3b](https://github.com/user-attachments/assets/57ee5026-6357-486e-bb8c-32a2f2d591ee)
+
+Map to the standard library
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+
+![day1l3c](https://github.com/user-attachments/assets/3befd597-be42-47e7-ac76-47ace5864323)
+
+
+![day1l3d](https://github.com/user-attachments/assets/faefd963-cf46-459f-9a92-476b805b090c)
+
+In order to see graphical version of the logic it has realized type :
+```
+show
+```
+
+
+![day1l3e](https://github.com/user-attachments/assets/32b98648-3ab3-457d-bd56-d2ede27bba7f)
+
+Now, To write the result netlist to a file use the write_veriog command. This will output the netlist to a file in the current directory.
+```
+write_verilog -noattr good_mux_netlist.v
+!gvim good_mux_netlist.v
+```
+
+
+
+![day1l3ff](https://github.com/user-attachments/assets/432335a1-d909-4fcf-b991-c3db843bb2f7)
+
+## **DAY 2 Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
+
+navigate to the verilog_files directory then type these below commands
+Command to open the libary file
+```
+$ vim ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+To shut off the background colors/ syntax off:
+: syn off
+To enable the line numbers
+: se nu
+
+![image](https://github.com/user-attachments/assets/b748ddb8-caff-4127-82a6-432fa7f7b090)
+
+The liberty(.lib) files store PVT parameters (Process, Voltage, Temperature). Variations in these parameters can significantly affect circuit performance. Manufacturing variations, voltage fluctuations, and temperature changes all contribute to this impact.
+The timing data of standard cells is provided in the liberty format. Every .lib file will provide timing, power, noise, area information for a single corner ie process,voltage, temperature etc.
+
+    Library
+    general information common to all cells in the library.
+    Cell
+    specific information about each standard cell.
+    Pin
+    Timing, power, capacitance, leakage functionality etc characteristics for each pin in each cell. 
+
+We can also find different versions of the same cell. For example, consider the 2- INPUT AND gate
+
+
+![day2l1](https://github.com/user-attachments/assets/bde4ef8f-8ed9-48bd-9856-b500b9befb6f)
+
+# Hierarchial synthesis vs Flat synthesis
+
+Hierarchial synthesis
+Steps :
+
+Invoke yosys
+```
+yosys
+```
+Read the library
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the design verilog files
+```
+read_verilog multiple_modules.v
+```
+![image](https://github.com/user-attachments/assets/c0fc026c-da32-4876-b43d-4f269f1b24f0)
+
+Synthesize the Design
+```
+synth -top multiple_modules
+```
+"When running synth -top multiple_modules in Yosys, a hierarchical synthesis is performed, meaning that the hierarchy between modules is preserved.
+
+![image](https://github.com/user-attachments/assets/15bb4a77-ff15-441e-9f6c-7e70c0a22435)
+
+Multiple Modules: - 2 SubModules
+
+Now Generate the Netlist
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Now let's Create a Graphical Representation of Logic for Multiple Modules
+```
+show multiple_modules
+```
+
+![image](https://github.com/user-attachments/assets/cc56de63-cd75-494e-ac9d-37c5aeab9542)
+
+Writing the netlist and then viewing
+```
+write_verilog -noattr multiple_modules_hier.v
+!vim multiple_modules_hier.v
+```
+
+![image](https://github.com/user-attachments/assets/7d81cdfe-3f69-4baa-b7fb-0429cb699b44)
+
+is the required NETlist file.
+
+**Flat synthesis**
+
+Merges all hierarchical modules in the design into a single module to create a flat netlist
+```
+flatten
+```
+Writing the netlist and then viewing
+```
+write_verilog -noattr multiple_modules_hier.v
+!vim multiple_modules_hier.v
+```
+
+
+![image](https://github.com/user-attachments/assets/f8171667-c105-43b6-93e3-9d632a8206d0)
+
+Now let's Create a Graphical Representation of Logic for Multiple Modules
+Just execute show command in yosys after that
+
+```
+show 
+```
+
+![image](https://github.com/user-attachments/assets/cd49d85c-97b2-4f87-9772-928a791ccb07)
+
+## Various D Flops coding styles, Simulation using Iverilog and GTKWave followed by Synthesis using Yosys.
+
+In a digital design, when an input signal changes state, the output changes after a propogation delay. All logic gates add some delay to singals. These delays cause expected and unwanted transitions in the output, called as Glitches where the output value is momentarily different from the expected value. An increased delay in one path can cause glitch when those signals are combined at the output gate. In short, more combinational circuits lead to more glitchy outputs that will not settle down with the output value.
+Flip flop overview
+
+A D flip-flop is a sequential element that follows the input pin d at the clock's given edge. D flip-flop is a fundamental component in digital logic circuits. There are two types of D Flip-Flops being implemented: Rising-Edge D Flip Flop and Falling-Edge D Flip Flop.
+
+Every flop element needs an initial state, else the combinational circuit will evaluate to a garbage value. In order to achieve this, there are control pins in the flop namely: Set and Reset which can either be Synchronous or Asynchronous.
+
+Simulation of D-Flipflop using Iverilog and GTKWave. Performed simulations for 3 types of D-Flipflops
+
+    Asynchronous Reset
+    Asynchronous Set
+    Synchronous Reset.
+
+1. Asynchronous Reset
+
+The velilog code for the asynchronous reset is given below :
+```
+module dff_asyncres(input clk, input async_reset, input d, output reg q);
+	always@(posedge clk, posedge async_reset)
+	begin
+		if(async_reset)
+			q <= 1'b0;
+		else
+			q <= d;
+	end
+endmodule
+```
+Testbench code is as follows:
+```
+module tb_dff_asyncres; 
+	reg clk, async_reset, d;
+	wire q;
+	dff_asyncres uut (.clk(clk),.async_reset (async_reset),.d(d),.q(q));
+
+	initial begin
+		$dumpfile("tb_dff_asyncres.vcd");
+		$dumpvars(0,tb_dff_asyncres);
+		// Initialize Inputs
+		clk = 0;
+		async_reset = 1;
+		d = 0;
+		#3000 $finish;
+	end
+		
+	always #10 clk = ~clk;
+	always #23 d = ~d;
+	always #547 async_reset=~async_reset; 
+endmodule
+
+```
+Command steps :
+
+Go to the required directory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
