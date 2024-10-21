@@ -1036,6 +1036,11 @@ The **ZOOMED** OUT image of the waveform is shown below:
 <br>
 
 # **RTL design using Verilog with SKY130 Technology**
+
+<details>
+<summary> Day1 </summary>
+<br>
+	
 ## Day 1: Introduction to Verilog RTL Design and Synthesis
 
 In digital circuit design, register-transfer level (RTL) is an abstraction that models a synchronous digital circuit by describing how data flows between hardware registers and how logic operations are applied to these signals. This RTL abstraction is used in HDL (Hardware Description Language) to create high-level models of a circuit, which can then be used to derive lower-level representations and, eventually, the actual hardware layout.
@@ -1182,6 +1187,14 @@ write_verilog -noattr good_mux_netlist.v
 
 
 ![day1l3ff](https://github.com/user-attachments/assets/432335a1-d909-4fcf-b991-c3db843bb2f7)
+
+</details>
+
+<details>
+<summary> Day 2 </summary>
+<br>
+
+
 
 ## **DAY 2 Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
 
@@ -1576,6 +1589,14 @@ show
 ```
 
 ![image](https://github.com/user-attachments/assets/e0301b35-b6f3-4180-87da-0a0b7fb0c0a8)
+
+</details>
+
+<details>
+<summary> Day 3 </summary>
+<br>
+
+
 
 ## Day 3: Combinational and sequential optimizations
 
@@ -2209,6 +2230,14 @@ show
 ![image](https://github.com/user-attachments/assets/64e6c9e1-2913-4ce5-b8b2-1a442496b395)
 
 
+</details>
+
+<details>
+<summary> Day 4 </summary>
+<br>
+
+
+
 ## DAY 4: GLS, blocking vs non-blocking and Synthesis-Simulation mismatch
 
 **Gate Level Simulation (GLS)**
@@ -2466,6 +2495,8 @@ Below is the Snapshot of the above commands and the resultant Waveforms:
 ![image](https://github.com/user-attachments/assets/90aa6f48-b1fd-47e7-b04f-e24fc2cb3761)
 
 These waveforms represent the results of the Gate Level Synthesis for the Blocking Caveat, illustrating how the design behaves at the gate level with respect to the blocking assignment issue.
+
+</details>
 
 
 
