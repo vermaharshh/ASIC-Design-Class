@@ -2202,11 +2202,14 @@ Now let's Create a Graphical Representation
 show
 ```
 
-![image](https://github.com/user-attachments/assets/81d69041-fce5-4148-9847-990689a35f69)
+![image](https://github.com/user-attachments/assets/b5edf0a6-1415-4379-9db8-e648ffcba11d)
 
 
 
-![image](https://github.com/user-attachments/assets/a5065236-957a-4d2f-b7aa-a49f7e3f6db8)
+![image](https://github.com/user-attachments/assets/64e6c9e1-2913-4ce5-b8b2-1a442496b395)
+
+
+
 
 
 
