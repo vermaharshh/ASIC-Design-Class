@@ -1340,7 +1340,415 @@ endmodule
 ```
 Command steps :
 
-Go to the required directory
+Go to the required directory:
+```
+cd /VLSI/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+Run the following commands to compile and simulate the design:
+```
+iverilog dff_asyncres.v tb_dff_asyncres.v
+ls
+```
+The compiled output will be saved as a.out.
+
+Execute the compiled output and open the waveform viewer:
+```
+./a.out
+gtkwave tb_dff_asyncres.vcd
+```
+By following these steps,we can observe the behavior of the D Flip-Flop with an asynchronous reset in the waveform viewer:
+![image](https://github.com/user-attachments/assets/d9243a04-9150-4d57-9840-34a8de4a6df6)
+
+Observation: From the waveform, we can observe that when the asynchronous reset is activated (set high), the Q output immediately resets to zero, regardless of the clock's positive or negative edge. This demonstrates the asynchronous behavior of the reset signal.
+
+-) Now we will see for a D Flip Flop with Asynchronous Set
+
+The design ensures that when the asynchronous set signal is high, the output Q is immediately set to 1, regardless of the clock signal.
+
+Verilog Code for Asynchronous Set D Flip-Flop:
+```
+module dff_async_set(input clk, input async_set, input d, output reg q);
+	always@(posedge clk, posedge async_set)
+	begin
+		if(async_set)
+			q <= 1'b1;
+		else
+			q <= d;
+	end
+endmodule
+```
+Testbench Code:
+```
+module tb_dff_async_set; 
+	reg clk, async_set, d;
+	wire q;
+	dff_async_set uut (.clk(clk), .async_set(async_set), .d(d), .q(q));
+
+	initial begin
+		$dumpfile("tb_dff_async_set.vcd");
+		$dumpvars(0, tb_dff_async_set);
+		// Initialize Inputs
+		clk = 0;
+		async_set = 1;
+		d = 0;
+		#3000 $finish;
+	end
+
+	always #10 clk = ~clk;
+	always #23 d = ~d;
+	always #547 async_set = ~async_set; 
+endmodule
+```
+Steps to Run the Simulation:
+
+    Navigate to the directory containing the Verilog files:
+
+```
+cd /VLSI/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+Compile the Verilog code and the testbench using Icarus Verilog:
+```
+iverilog dff_async_set.v tb_dff_async_set.v
+ls
+```
+The output will be saved as a.out.
+
+Run the compiled file and open the waveform in GTKWave:
+```
+./a.out
+gtkwave tb_dff_async_set.vcd
+```
+Result:
+
+After running the simulation, we will observe the behavior of the D Flip-Flop with an asynchronous set in the waveform viewer. Below is a snapshot of the commands and the resulting waveforms.
+![image](https://github.com/user-attachments/assets/b8f062e9-067d-4402-be17-fd0c9436a2b0)
+
+Synchronous Reset
+
+The verilog code for the Synchronous reset is given below :
+```
+module dff_syncres(input clk, input sync_reset, input d, output reg q);
+	always@(posedge clk)
+	begin
+		if(sync_reset)
+			q <= 1'b0;
+		else
+			q <= d;
+	end
+endmodule
+```
+Testbench code is as follows:
+```
+module tb_dff_syncres; 
+	reg clk, syncres, d;
+	wire q;
+	dff_asyncres uut (.clk(clk),.sync_reset (sync_reset),.d(d),.q(q));
+
+	initial begin
+		$dumpfile("tb_dff_syncres.vcd");
+		$dumpvars(0,tb_dff_syncres);
+		// Initialize Inputs
+		clk = 0;
+		sync_reset = 1;
+		d = 0;
+		#3000 $finish;
+	end
+		
+	always #10 clk = ~clk;
+	always #23 d = ~d;
+	always #547 sync_reset=~async_reset; 
+endmodule
+```
+Command steps :
+
+Go to the required directory:
+```
+cd /VLSI/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+put these commands to see the waveform:
+```
+iverilog dff_syncres.v tb_dff_syncres.v
+ls
+```
+After giving the above command the IVerilog stores the output as ' a.out '
+
+Now let's execute the ' a.out ' file and observe the waveforms.
+```
+./a.out
+gtkwave tb_dff_syncres.vcd
+```
+Below is the Snapshot of the above commands and the resultant Waveforms:
+![image](https://github.com/user-attachments/assets/e3e2b565-fdfb-4c30-a7eb-9c5812df8ca9)
+
+OBSERVATION : From the waveform, it can be observed that the Q output changes to zero when the synchronous reset is set high, only at the positive clock edge.
+
+# Synthesis of Various D-Flipflop using Yosys. Performed simulations for 3 types of D-Flipflops
+
+    Asynchronous Reset
+    Asynchronous Set
+    Synchronous Reset.
+
+Asynchronous Reset
+Command steps :
+
+Invoke yosys
+```
+yosys
+```
+Read the library
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the design verilog files
+```
+read_verilog dff_asyncres.v
+```
+Synthesize the Design
+```
+synth -top dff_asyncres
+```
+Now Generate the Netlist
+```
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Now let's Create a Graphical Representation of Asynchronous Reset - D FlipFlop
+```
+show
+```
+
+![image](https://github.com/user-attachments/assets/f6261a22-6bb0-4530-81b8-2bf697627289)
+
+Asynchronous Set
+Command steps :
+
+Invoke yosys
+```
+yosys
+```
+Read the library
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the design verilog files
+```
+read_verilog dff_async_set.v
+```
+Synthesize the Design
+```
+synth -top dff_async_set
+```
+Now Generate the Netlist
+```
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Now let's Create a Graphical Representation of Asynchronous Set - D FlipFlop
+```
+show
+```
+![image](https://github.com/user-attachments/assets/a4643783-36f2-4abf-9bce-f1cb9b0f9593)
+
+Synchronous Reset
+Command steps :
+
+Invoke yosys
+```
+yosys
+```
+Read the library
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the design verilog files
+```
+read_verilog dff_syncres.v
+```
+Synthesize the Design
+```
+synth -top dff_syncres
+```
+Now Generate the Netlist
+```
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Now let's Create a Graphical Representation of Synchronous Reset - D FlipFlop
+```
+show
+```
+
+![image](https://github.com/user-attachments/assets/e0301b35-b6f3-4180-87da-0a0b7fb0c0a8)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
