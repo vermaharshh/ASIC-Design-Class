@@ -1220,6 +1220,20 @@ The timing data of standard cells is provided in the liberty format. Every .lib 
     Pin
     Timing, power, capacitance, leakage functionality etc characteristics for each pin in each cell. 
 
+The .lib file provides critical information about the type of process used (such as 130nm technology in this case) and the process conditions like temperature, voltage, etc. It also defines various constraints, including units for variables and the type of technology used. For example:
+
+    technology("cmos"): Specifies the technology as CMOS.
+    delay_model : "table_lookup": Defines the delay model.
+    bus_naming_style : "%s[%d]": Defines the naming convention for buses.
+    time_unit : "1ns": Sets the unit of time.
+    voltage_unit : "1V": Sets the unit of voltage.
+    leakage_power_unit : "1nW": Defines the unit for leakage power.
+    current_unit : "1mA": Sets the unit of current.
+    pulling_resistance_unit : "1kohm": Specifies the unit for pulling resistance.
+    capacitive_load_unit(1.0000000000, "pf"): Defines the unit for capacitive load.
+
+Additionally, the .lib file provides details about the characteristics of various cells, such as leakage power, power consumption, area, input capacitance, and delay for different input combinations.
+
 We can also find different versions of the same cell. For example, consider the 2- INPUT AND gate
 
 
