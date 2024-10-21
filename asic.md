@@ -1577,6 +1577,638 @@ show
 
 ![image](https://github.com/user-attachments/assets/e0301b35-b6f3-4180-87da-0a0b7fb0c0a8)
 
+## Day 3: Combinational and sequential optimizations
+
+There are two types of optimisations: Combinational and Sequential optimisations. These optimisations are done inorder to achieve designs that are efficient in terms of area, power, and performance.
+
+Combinational Optimization
+
+The techiniques used are:
+
+    Constant Propagation (Direct Optimisation)
+    Boolean Logic Optimisation (using K-Map or Quine McCluskey method)
+
+
+Let's see a 2 input AND gate
+
+The velilog code is given below :
+```
+module opt_check(input a, input b, output y);
+	assign y = a?b:0;
+endmodule
+```
+The above code infers a multiplexer and since one of the inputs of the multiplexer is always connected to the ground it will infer an AND gate on optimisation.
+
+Run the below code for netlist:
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog opt_check.v
+synth -top opt_check
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+
+
+![image](https://github.com/user-attachments/assets/973799fa-e0af-43a4-8a1a-61d311dbd60e)
+Example 2:
+
+Verllog code:
+```
+module opt_check2 (input a , input b , output y);
+	assign y = a?1:b;
+endmodule
+```
+Since one of the inputs of the multiplexer is always connected to the logic 1 it will infer an OR gate on optimisation.The OR gate will be NAND implementation since NOR gate has stacked pmos while NAND implementation has stacked nmos.
+
+Run the below code for netlist:
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog opt_check2.v
+synth -top opt_check2
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+![image](https://github.com/user-attachments/assets/1475fec3-7c11-4e38-81cc-ffe2cac79905)
+
+Example 3:
+
+Verilog code:
+```
+module opt_check3 (input a , input b, input c , output y);
+	assign y = a?(c?b:0):0;
+endmodule
+```
+On optimisation the above design becomes a 3 input AND gate.
+
+Run the below code for netlist:
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog opt_check3.v
+synth -top opt_check3
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+![image](https://github.com/user-attachments/assets/f1b6155c-da5c-4197-b9af-c8360377c339)
+
+Example 4:
+
+Verilog code:
+```
+module opt_check4 (input a , input b, input c , output y);
+	assign y = a?(c?b:0):0;
+endmodule
+```
+On optimisation the above design becomes a 2 input XNOR gate (3 input boolean logic)
+
+Run the below code for netlist:
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog opt_check4.v
+synth -top opt_check4
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+
+![image](https://github.com/user-attachments/assets/756733bc-d41a-485e-a136-3f73a003a9b4)
+
+Example 5:
+
+Verilog code:
+```
+module sub_module1(input a , input b , output y);
+ assign y = a & b;
+endmodule
+
+module sub_module2(input a , input b , output y);
+ assign y = a^b;
+endmodule
+
+module multiple_module_opt(input a , input b , input c , input d , output y);
+wire n1,n2,n3;
+
+sub_module1 U1 (.a(a) , .b(1'b1) , .y(n1));
+sub_module2 U2 (.a(n1), .b(1'b0) , .y(n2));
+sub_module2 U3 (.a(b), .b(d) , .y(n3));
+
+assign y = c | (b & n1); 
+
+endmodule
+```
+On optimisation the above design becomes a AND OR gate
+
+Run the below code for netlist:
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog multiple_module_opt.v
+synth -top multiple_module_opt
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+flatten
+show
+```
+![image](https://github.com/user-attachments/assets/ddb76d3a-2e0b-4a1c-aded-c7f2ba950d4c)
+
+Example 6:
+
+Verilog code:
+```
+module sub_module(input a , input b , output y);
+	assign y = a & b;
+endmodule
+
+module multiple_module_opt2(input a , input b , input c , input d , output y);
+		wire n1,n2,n3;
+	sub_module U1 (.a(a) , .b(1'b0) , .y(n1));
+	sub_module U2 (.a(b), .b(c) , .y(n2));
+	sub_module U3 (.a(n2), .b(d) , .y(n3));
+	sub_module U4 (.a(n3), .b(n1) , .y(y));
+endmodule
+```
+On optimisation the above design becomes Y=0
+
+Run the below code for netlist:
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog multiple_module_opt2.v
+synth -top multiple_module_opt2
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+flatten
+show
+```
+
+![image](https://github.com/user-attachments/assets/3cd89d50-a15b-4b6c-aa62-dbbedefffcaf)
+
+# Optimization of various Sequential Designs
+
+    D-Flipflop Constant 1 with Asynchronous Reset (active low)
+    D-Flipflop Constant 2 with Asynchronous Reset (active high)
+    D-Flipflop Constant 3 with Synchronous Reset (active low)
+    D-Flipflop Constant 4 with Synchronous Reset (active high)
+    D-Flipflop Constant 5 with Synchronous Reset
+    Counter Optimization 1
+    Counter Optimization 2
+1. D-Flipflop Constant 1 with Asynchronous Reset (active low)
+
+The velilog code for the asynchronous reset (active low) is given below :
+```
+module dff_const1(input clk, input reset, output reg q); 
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+		q <= 1'b0;
+	else
+		q <= 1'b1;
+end
+endmodule
+```
+Testbench code is as follows:
+```
+module tb_dff_const1; 
+	reg clk, reset;
+	wire q;
+
+	dff_const1 uut (.clk(clk),.reset(reset),.q(q));
+
+	initial begin
+		$dumpfile("tb_dff_const1.vcd");
+		$dumpvars(0,tb_dff_const1);
+		// Initialize Inputs
+		clk = 0;
+		reset = 1;
+		#3000 $finish;
+	end
+
+	always #10 clk = ~clk;
+	always #1547 reset=~reset;
+endmodule
+```
+Steps:
+```
+iverilog dff_const1.v tb_dff_const1.v
+ls
+```
+After giving the above command the IVerilog stores the output as ' a.out '
+
+Now let's execute the ' a.out ' file and observe the waveforms.
+```
+./a.out
+gtkwave tb_dff_const1.vcd
+```
+Below is the Snapshot of the above commands and the resultant Waveforms:
+
+
+![image](https://github.com/user-attachments/assets/d2fea82d-ff00-497b-b748-930592b0fc95)
+
+OBSERVATION : From the waveform, it can be observed that the Q output is always high when reset is zero, and reset doesn't depend on clock edge.
+SYNTHESIS :
+Invoke yosys
+```
+yosys
+```
+Read the library
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the design verilog files
+```
+read_verilog dff_const1.v
+```
+Synthesize the Design
+```
+synth -top dff_const1
+```
+Now Generate the Netlist
+```
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Now let's Create a Graphical Representation
+```
+show
+```
+
+![image](https://github.com/user-attachments/assets/1a0e4537-4214-4034-93cf-3482cf14c030)
+
+OBSERVATION : Since reset doesn't depend on clock edge, therefore the D Flip Flop has not been removed.
+
+2. D-Flipflop Constant 2 with Asynchronous Reset (active high)
+
+The velilog code for the asynchronous reset (active high) is given below :
+```
+module dff_const1(input clk, input reset, output reg q); 
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+		q <= 1'b1;
+	else
+		q <= 1'b1;
+end
+endmodule
+```
+Testbench code is as follows:
+```
+module tb_dff_const2; 
+	reg clk, reset;
+	wire q;
+
+	dff_const2 uut (.clk(clk),.reset(reset),.q(q));
+
+	initial begin
+		$dumpfile("tb_dff_const1.vcd");
+		$dumpvars(0,tb_dff_const1);
+		// Initialize Inputs
+		clk = 0;
+		reset = 1;
+		#3000 $finish;
+	end
+
+	always #10 clk = ~clk;
+	always #1547 reset=~reset;
+endmodule
+```
+Steps:
+We just need to put few commands as stated below in order to see the waveforms.
+```
+iverilog dff_const2.v tb_dff_const2.v
+ls
+```
+After giving the above command the IVerilog stores the output as ' a.out '
+
+Now let's execute the ' a.out ' file and observe the waveforms.
+```
+./a.out
+gtkwave tb_dff_const2.vcd
+```
+
+![image](https://github.com/user-attachments/assets/31d674d0-4562-4b1a-aa66-461be3b0d21b)
+
+OBSERVATION : From the waveform, it can be observed that the Q output is always high irrespective of reset.
+SYNTHESIS :
+
+This will invoke/start the yosys
+```
+yosys       
+```
+Read the library
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the design verilog files
+```
+read_verilog dff_const2.v
+```
+Synthesize the Design
+```
+synth -top dff_const2
+```
+Now Generate the Netlist
+```
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Now let's Create a Graphical Representation
+```
+show
+```
+
+![image](https://github.com/user-attachments/assets/7f97eb24-2a88-42bd-a52d-3433fe955f02)
+
+OBSERVATION : Since output q doesn't depend on reset edgeand is always 1, therefore the D Flip Flop has been removed.
+
+3. D-Flipflop Constant 3 with Synchronous Reset (active low)
+
+The velilog code for the synchronous reset (active low) is given below :
+```
+module dff_const3(input clk, input reset, output reg q); 
+	reg q1;
+
+	always @(posedge clk, posedge reset)
+	begin
+		if(reset)
+		begin
+			q <= 1'b1;
+			q1 <= 1'b0;
+		end
+		else
+		begin	
+			q1 <= 1'b1;
+			q <= q1;
+		end
+	end
+endmodule
+```
+Testbench code is as follows:
+```
+module dff_const3(input clk, input reset, output reg q); 
+	reg q1;
+
+	always @(posedge clk, posedge reset)
+	begin
+		if(reset)
+		begin
+			q <= 1'b1;
+			q1 <= 1'b0;
+		end
+		else
+		begin	
+			q1 <= 1'b1;
+			q <= q1;
+		end
+	end
+endmodule
+
+```
+
+SYNTHESIS :
+This will invoke/start the yosys
+```
+yosys       
+```
+Read the library
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the design verilog files
+```
+read_verilog dff_const3.v
+```
+Synthesize the Design
+```
+synth -top dff_const3
+```
+Now Generate the Netlist
+```
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Now let's Create a Graphical Representation
+```
+show
+```
+
+![image](https://github.com/user-attachments/assets/f88bf74e-bc5a-4938-89f6-bdce5d82b58a)
+
+![image](https://github.com/user-attachments/assets/f8ac0e77-b25b-47e7-aa0c-0af664240e4b)
+
+OBSERVATION : This module defines a D flip-flop, for a positive edge of reset, q is set to 1 and q1 is set to 0. On each clock cycle, q1 is set to 1, and q is updated with the value of q1.
+
+When synthesized, the design will result in a flip-flop where q becomes 1 after the first clock cycle post-reset and stays 1 afterward.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
