@@ -1303,7 +1303,7 @@ Simulation of D-Flipflop using Iverilog and GTKWave. Performed simulations for 3
 
 1. Asynchronous Reset
 
-The velilog code for the asynchronous reset is given below :
+The verilog code for the asynchronous reset is given below :
 ```
 module dff_asyncres(input clk, input async_reset, input d, output reg q);
 	always@(posedge clk, posedge async_reset)
@@ -1591,7 +1591,7 @@ The techiniques used are:
 
 Let's see a 2 input AND gate
 
-The velilog code is given below :
+The verilog code is given below :
 ```
 module opt_check(input a, input b, output y);
 	assign y = a?b:0;
@@ -1760,7 +1760,7 @@ show
     Counter Optimization 2
 1. D-Flipflop Constant 1 with Asynchronous Reset (active low)
 
-The velilog code for the asynchronous reset (active low) is given below :
+The verilog code for the asynchronous reset (active low) is given below :
 ```
 module dff_const1(input clk, input reset, output reg q); 
 always @(posedge clk, posedge reset)
@@ -1843,7 +1843,7 @@ OBSERVATION : Since reset doesn't depend on clock edge, therefore the D Flip Flo
 
 2. D-Flipflop Constant 2 with Asynchronous Reset (active high)
 
-The velilog code for the asynchronous reset (active high) is given below :
+The verilog code for the asynchronous reset (active high) is given below :
 ```
 module dff_const1(input clk, input reset, output reg q); 
 always @(posedge clk, posedge reset)
@@ -1926,7 +1926,7 @@ OBSERVATION : Since output q doesn't depend on reset edgeand is always 1, theref
 
 3. D-Flipflop Constant 3 with Synchronous Reset (active low)
 
-The velilog code for the synchronous reset (active low) is given below :
+The verilog code for the synchronous reset (active low) is given below :
 ```
 module dff_const3(input clk, input reset, output reg q); 
 	reg q1;
@@ -2001,6 +2001,319 @@ show
 OBSERVATION : This module defines a D flip-flop, for a positive edge of reset, q is set to 1 and q1 is set to 0. On each clock cycle, q1 is set to 1, and q is updated with the value of q1.
 
 When synthesized, the design will result in a flip-flop where q becomes 1 after the first clock cycle post-reset and stays 1 afterward.
+
+4. D-Flipflop Constant 4 with Synchronous Reset (active high)
+
+The verilog code for the synchronous reset (active high) is given below :
+```
+module dff_const4(input clk, input reset, output reg q); 
+	reg q1;
+
+	always @(posedge clk, posedge reset)
+	begin
+		if(reset)
+		begin
+			q <= 1'b1;
+			q1 <= 1'b1;
+		end
+		else
+		begin	
+			q1 <= 1'b1;
+			q <= q1;
+		end
+	end
+endmodule
+```
+SYNTHESIS :
+This will invoke/start the yosys
+```
+yosys       
+```
+Read the library
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the design verilog files
+```
+read_verilog dff_const4.v
+```
+Synthesize the Design
+```
+synth -top dff_const4
+```
+Now Generate the Netlist
+```
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Now let's Create a Graphical Representation
+```
+show
+```
+
+![image](https://github.com/user-attachments/assets/0abfc34a-38f0-409c-ad11-e25c968c6977)
+
+![image](https://github.com/user-attachments/assets/58d8fde7-dfe6-40dc-a0d8-569a1e8a8ab2)
+
+OBSERVATION : This module defines a D flip-flop that sets both q and q1 to 1 on a positive edge of reset. On each clock cycle, q1 remains 1, and q is updated with the value of q1 (which is always 1).
+
+When synthesized, the design will result in a flip-flop where q is always 1, regardless of the reset or clock state.
+
+5. D-Flipflop Constant 5 with Synchronous Reset
+
+The verilog code for the synchronous reset is given below :
+```
+module dff_const5(input clk, input reset, output reg q); 
+	reg q1;
+
+	always @(posedge clk, posedge reset)
+	begin
+		if(reset)
+		begin
+			q <= 1'b0;
+			q1 <= 1'b0;
+		end
+		else
+		begin	
+			q1 <= 1'b1;
+			q <= q1;
+		end
+	end
+endmodule
+```
+SYNTHESIS :
+This will invoke/start the yosys
+```
+yosys       
+```
+Read the library
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the design verilog files
+```
+read_verilog dff_const5.v
+```
+Synthesize the Design
+```
+synth -top dff_const5
+```
+Now Generate the Netlist
+```
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Now let's Create a Graphical Representation
+```
+show
+```
+![image](https://github.com/user-attachments/assets/b97261df-2941-43ae-b249-79ba557a8d4d)
+
+![image](https://github.com/user-attachments/assets/c656bc71-9169-4c7c-b215-32edc0b63a82)
+
+OBSERVATION : This module defines a D flip-flop that resets both q and q1 to 0 on a positive edge of reset. On each clock cycle, it sets q1 to 1 and then updates q with the value of q1 (which will always be 1 after the first cycle).
+When synthesized, the design will result in a flip-flop where q is always 1 after the first clock cycle post-reset.
+
+6. Counter Optimization 1
+
+The verilog code for the Counter Optimization 1 is given below :
+```
+module counter_opt (input clk, input reset, output q);
+	reg [2:0] count;
+	assign q = count[0];
+	
+	always @(posedge clk,posedge reset)
+	begin
+		if(reset)
+			count <= 3'b000;
+		else
+			count <= count + 1;
+	end
+endmodule
+```
+SYNTHESIS :
+
+This will invoke/start the yosys
+```
+yosys       
+```
+Read the library
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the design verilog files
+```
+read_verilog counter_opt.v
+```
+Synthesize the Design
+```
+synth -top counter_opt
+```
+Now Generate the Netlist
+```
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Now let's Create a Graphical Representation
+```
+show
+```
+![image](https://github.com/user-attachments/assets/09372305-d92d-4551-8a00-871d7bdaf20b)
+
+![image](https://github.com/user-attachments/assets/d9ef7bec-70d7-41a2-97b8-05995ad141b3)
+
+7. Counter Optimization 2
+
+The verilog code for the synchronous reset (active high) is given below :
+```
+module counter_opt2 (input clk, input reset, output q);
+	reg [2:0] count;
+	assign q = (count[2:0] == 3'b100);
+	
+	always @(posedge clk,posedge reset)
+	begin
+		if(reset)
+			count <= 3'b000;
+		else
+			count <= count + 1;
+	end
+endmodule
+```
+SYNTHESIS :
+This will invoke/start the yosys
+```
+yosys       
+```
+Read the library
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the design verilog files
+```
+read_verilog counter_opt2.v
+```
+Synthesize the Design
+```
+synth -top counter_opt2
+```
+Now Generate the Netlist
+```
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Now let's Create a Graphical Representation
+```
+show
+```
+
+![image](https://github.com/user-attachments/assets/81d69041-fce5-4148-9847-990689a35f69)
+
+
+
+![image](https://github.com/user-attachments/assets/a5065236-957a-4d2f-b7aa-a49f7e3f6db8)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
