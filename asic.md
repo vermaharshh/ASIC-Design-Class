@@ -2096,7 +2096,7 @@ When synthesized, the design will result in a flip-flop where q is always 1, reg
 Generating the netlist for the special case circuits.
 
     Multiplication by a factor of 2: In this circuit, there are no special hardware multipler blocks are not required for the implementation. Rather we will append zero bit to the LSB of the number effectively shifting it to the left. The same can be seen the netlist images generated from the below commands.
-
+```
 yosys
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog mult_2.v
@@ -2104,8 +2104,33 @@ synth -top mul2
 show
 write_verilog -noattr mul2_netlist.v
 !gvim mul2_netlist.v
-
+```
 As we can see that there is no hardware involved hence the command of abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib says don't call the ABC function as there is nothing to map.
+
+![image](https://github.com/user-attachments/assets/dfb59c79-3922-43e0-b765-003e7f75ccf4)
+
+![image](https://github.com/user-attachments/assets/f3d5f3c5-2f95-43d4-a35c-f596bf0ce2d2)
+
+
+    Mul8: Similar to the previous one, here for multiplication of the given number with a factor of 9 will be implemented without the use of any hardware cells, memories, etc.
+
+Below are the commands and the respective screenshots:
+
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog mult_8.v
+synth -top mult8
+show
+write_verilog -noattr mult8_netlist.v
+!gvim mult8_netlist.v
+
+![image](https://github.com/user-attachments/assets/ecce267d-61b6-4cc3-a36d-6bc9054595b0)
+
+![image](https://github.com/user-attachments/assets/a87ce43c-2fe0-4c3f-b739-7c4b676f10aa)
+
+
+
+
 
 5. D-Flipflop Constant 5 with Synchronous Reset
 
