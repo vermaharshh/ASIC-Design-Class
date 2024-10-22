@@ -2093,6 +2093,20 @@ OBSERVATION : This module defines a D flip-flop that sets both q and q1 to 1 on 
 
 When synthesized, the design will result in a flip-flop where q is always 1, regardless of the reset or clock state.
 
+Generating the netlist for the special case circuits.
+
+    Multiplication by a factor of 2: In this circuit, there are no special hardware multipler blocks are not required for the implementation. Rather we will append zero bit to the LSB of the number effectively shifting it to the left. The same can be seen the netlist images generated from the below commands.
+
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog mult_2.v
+synth -top mul2
+show
+write_verilog -noattr mul2_netlist.v
+!gvim mul2_netlist.v
+
+As we can see that there is no hardware involved hence the command of abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib says don't call the ABC function as there is nothing to map.
+
 5. D-Flipflop Constant 5 with Synchronous Reset
 
 The verilog code for the synchronous reset is given below :
