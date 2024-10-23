@@ -2610,6 +2610,14 @@ Below screenshots shows the synthesis output report,
 
 ![T4](https://github.com/user-attachments/assets/c8b108cd-7d7b-4118-aebd-6ff91305aa4b)
 
+The testbench has been changed to :
+
+
+![image](https://github.com/user-attachments/assets/6788575f-0a47-4924-94ab-b5313edb4137)
+
+
+
+
 Now let`s Observe the output waveform of synthesised RISC-V
 
 Below screenshot shows the output waveform more zoomed-in,
