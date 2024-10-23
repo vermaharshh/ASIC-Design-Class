@@ -2600,6 +2600,10 @@ These commands will generate the vsdbaby soc top level netlist file vsdbabysoc.s
 ![image](https://github.com/user-attachments/assets/4f476cb8-d50f-43f5-abfd-9580ffade9b0)
 
 
+
+![image](https://github.com/user-attachments/assets/d0f005f9-843a-4a53-bab3-8a433965b7a2)
+
+
 Below screenshots shows the synthesis output report,
 
 
@@ -2612,8 +2616,8 @@ Below screenshots shows the synthesis output report,
 
 The testbench has been changed to :
 
+![image](https://github.com/user-attachments/assets/c01e2900-9901-409e-b498-e7a6e1db11aa)
 
-![image](https://github.com/user-attachments/assets/6788575f-0a47-4924-94ab-b5313edb4137)
 
 
 
