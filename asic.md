@@ -2656,7 +2656,11 @@ Below screenshot shows the output waveform more zoomed-in,
 Standard cells in gtkwave
 
 
-![T10CELLS](https://github.com/user-attachments/assets/35cf78eb-81ab-4fef-8584-4db8f631141c)
+
+
+![t1-overlay](https://github.com/user-attachments/assets/57d0d3dd-bb6a-4432-9e42-be74a64045d9)
+
+
 
 In the above waveforms, we can see the following signals:
 
