@@ -2685,6 +2685,141 @@ OUT: This is a real datatype wire which can simulate analog values. It is the ou
 </details>
 
 
+<details>
+<summary> LAB 10 </summary>
+<br>
+
+## Static Timing Analysis for Synthesized VSDBabySoC using OpenSTA
+
+Static Timing Analysis (STA) is a method used in digital circuit design to verify the timing performance of a circuit without requiring dynamic simulation. It checks whether the circuit meets its timing constraints by analyzing the timing paths in the design. Here are some key aspects of STA:
+
+    Timing Paths: STA evaluates all possible paths through a circuit from input to output, taking into account the propagation delays of gates and interconnects.
+
+    Setup and Hold Times: It checks for setup and hold time violations. The setup time is the minimum time before the clock edge that the input data must be stable, while the hold time is the minimum time after the clock edge that the data must remain stable.
+
+    Clock Constraints: STA incorporates clock definitions, including the clock frequency, period, and any variations (like skew or jitter).
+
+    Worst-case Scenario: STA assumes worst-case conditions for delay values (like maximum load, temperature, and voltage) to ensure that the circuit will perform correctly under all expected operating conditions.
+
+    Tools: There are various tools for performing STA, such as Synopsys PrimeTime, Cadence Tempus, and others, which automate the process and provide detailed reports on timing violations.
+
+Overall, STA is crucial for ensuring that digital circuits operate reliably at the intended speeds and for identifying potential timing issues early in the design process.
+
+Timing Checks:
+
+    Setup Check: Ensures data arrives before the clock edge, allowing sufficient time for stabilization.
+    Hold Check: Ensures data remains stable long enough after the clock edge.
+
+Timing Margins and Slack:
+
+    Slack: The difference between the required time and the actual arrival time of signals. Positive slack means timing constraints are met, while negative slack indicates a timing violation.
+    Setup Slack: Time margin for setup constraints.
+    Hold Slack: Time margin for hold constraints.
+    Static Timing Tools: STA tools, like Synopsys PrimeTime and Cadence Tempus, perform analysis by creating and traversing timing graphs that represent all paths in the design. These tools provide reports on slack, critical paths, and timing violations.
+
+Process, Voltage, and Temperature (PVT) Corners: STA includes PVT analysis to account for variations in manufacturing, operational voltages, and temperature ranges. STA ensures that timing constraints are met across worst-case PVT corners.
+
+Optimization Techniques:
+
+    Buffer Insertion: Adds buffers to reduce delay in long paths.
+    Gate Sizing: Resizes gates to improve timing on critical paths.
+    Clock Tree Optimization (CTO): Minimizes skew and jitter in the clock distribution network. By ensuring that timing analysis is thorough and covers all potential scenarios, STA plays a crucial role in achieving reliable and high-performance ASIC designs.
+
+reg2reg Path:
+
+A reg2reg path (register-to-register path) refers to a timing path in a digital circuit that connects two sequential elements, specifically flip-flops or registers. This path is crucial in the context of Static Timing Analysis (STA) because it represents the flow of data from one register to another through combinational logic.
+
+Reg2reg paths are essential for ensuring proper data flow and synchronization in digital circuits, especially in designs with pipelining or sequential operations. Analyzing these paths helps in verifying that the data processing occurs correctly across clock cycles, thereby ensuring the overall functionality and reliability of the circuit.
+clk2reg Path:
+
+A clk2reg path (clock-to-register path) refers to a timing path in a digital circuit that connects the clock signal to a register (flip-flop). This path is crucial for ensuring that the register operates correctly in response to clock events.
+
+# Installation of Required Tools:
+
+1. Install CUDD:
+
+Download and move the file to the home directory for easy access:
+```
+cd ~
+tar xvfz cudd-3.0.0.tar.gz
+cd cudd-3.0.0
+./configure
+make
+```
+2. Set up OpenSTA: Ensure system update and installation of dependencies:
+```
+cd ~
+sudo apt-get install cmake clang gcc tcl swig bison flex -y
+```
+
+Clone OpenSTA repository and build with CUDD support:
+```
+git clone https://github.com/parallaxsw/OpenSTA.git
+cd OpenSTA
+cmake -DCUDD_DIR=/home/harsh-verma/cudd-3.0.0
+make
+app/sta
+```
+
+Create a new directory for lab setup:
+```
+mkdir ~/OpenSTA/lab10
+```
+
+Move all necessary files into lab10 directory for timing analysis.
+Timing Analysis Procedure:
+
+Ensure the following parameters for analysis:
+
+    Clock period: 10.25 ns
+    Setup uncertainty & clock transition: 5% of clock period
+    Hold uncertainty & data transition: 8% of clock period
+
+```
+cd /home/harsh-verma/OpenSTA/app
+./sta
+
+read_liberty /home/harsh-verma/OpenSTA/lab10/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog /home/harsh-verma/OpenSTA/lab10/harsh_riscv_netlist.v
+link_design rvmyth
+
+create_clock -name clk -period 10.25 [get_ports clk]
+set_clock_uncertainty [expr 0.05 * 10.25] -setup [get_clocks clk]
+set_clock_uncertainty [expr 0.08 * 10.25] -hold [get_clocks clk]
+set_clock_transition [expr 0.05 * 10.25] [get_clocks clk]
+set_input_transition [expr 0.08 * 10.25] [all_inputs]
+
+report_checks -path_delay max
+report_checks -path_delay min
+```
+
+Terminal Output:
+
+
+
+![l11](https://github.com/user-attachments/assets/e24532a5-f97f-457e-a0ce-d97c60167ac8)
+
+
+In the below screenshot, we can observe the timing report for a reg2reg max path,
+
+
+
+![l10](https://github.com/user-attachments/assets/e9994952-e0df-4939-a2a7-6fd30da41cf8)
+
+Below screenshot shows the reg2reg min path report,
+
+
+
+
+![l10min](https://github.com/user-attachments/assets/a1e6bcde-f88a-4c88-98aa-b61043d66562)
+
+The max path report is for the Setup Slack and the min path report is for the Hold Slack.
+We can conclude that the timing constraints are not met for our design by observing the OpenSTA Timing reports.
+
+
+
+
+</details>
 
 
 
