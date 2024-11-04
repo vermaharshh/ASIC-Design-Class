@@ -2840,6 +2840,86 @@ We can conclude that the timing constraints are not met for our design by observ
 
 
 
+<details>
+<summary> LAB 11 </summary>
+<br>
+
+# PVT Corner Analysis for Synthesized VSDBabySoC using OpenSTA
+
+The PVT corner refers to the combination of Process, Voltage, and Temperature variations that a semiconductor chip might encounter during its operation. These variations can affect the performance, power consumption, and reliability of the chip, so they are simulated to ensure the chip functions correctly under different conditions. The below tcl script sta_pvt.tcl can be run to perform the STA across the PVT corners for which the sky130 lib files are available: The script is
+
+
+![2](https://github.com/user-attachments/assets/b64f7df1-ef32-4df9-8c29-7b0cfe33a14f)
+
+
+The SDC file used for generating clock and data constraints is given below:
+## SDC constraints for VSDBabySoC
+
+
+
+![3](https://github.com/user-attachments/assets/f891ef51-669d-4adb-80a0-289fd4feb6e4)
+
+
+Analysis Report
+## table of slack report:
+
+
+
+![table](https://github.com/user-attachments/assets/f29cac3b-0737-4191-913a-3055ae9efae5)
+
+Total Negative Slack:
+
+
+
+![4](https://github.com/user-attachments/assets/832a6d6d-f9f8-4793-8659-e7a01daf1078)
+
+Worst (Negative slack)Setup Slack:
+
+
+
+![5wns](https://github.com/user-attachments/assets/bc464119-cbbb-47c0-8fc4-12802652c738)
+
+
+Worst Setup Slack:
+
+
+![6wns](https://github.com/user-attachments/assets/4181460a-73a6-4825-9c4f-ec82224dbdfe)
+
+Worst Hold Slack:
+
+
+
+
+![7](https://github.com/user-attachments/assets/74554ac4-b9e7-4702-a339-e32f968cf748)
+
+
+The analysis report shows the following key points:
+
+    Worst Setup Slack: sky130_fd_sc_hd__ss_n40C_1v28.lib library file has the worst setup slack.
+    Worst Hold Slack: sky130_fd_sc_hd__ff_100C_1v95.lib library file has the worst hold slack.
+
+The total negative slack and worst negative slacks are provided in the detailed slacks report screenshots.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</details>
+
 
 
 
