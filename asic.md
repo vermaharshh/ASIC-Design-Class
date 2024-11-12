@@ -2902,8 +2902,75 @@ The total negative slack and worst negative slacks are provided in the detailed 
 
 
 
+</details>
+
+<details>
+<summary> LAB 12 </summary>
+<br>
+
+# Advanced Physical Design Using Openlane/Sky130 Wokshop
+
+ ## Day 1 - Introduction to open-source EDA, OpenLANE and Sky130 PDK
+
+1) Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs. Commands to invoke the OpenLANE flow and perform synthesis
+
+```
+# Change directory to openlane flow directory
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+# Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
+docker
+
+# Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
+./flow.tcl -interactive
+
+# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+package require openlane 0.9
+
+# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
+prep -design picorv32a
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+
+# Exit from OpenLANE flow
+exit
+
+# Exit from OpenLANE flow docker sub-system
+exit
+```
 
 
+
+
+![Screenshot from 2024-11-12 23-39-04](https://github.com/user-attachments/assets/9a850654-7f17-461e-ab81-7278beb5da13)
+
+
+
+
+
+![Screenshot from 2024-11-12 23-43-59](https://github.com/user-attachments/assets/e3c14452-721e-467c-8b32-856da2867af5)
+
+
+
+![Screenshot from 2024-11-12 23-56-41](https://github.com/user-attachments/assets/ffbe07e1-c7ea-4c64-b279-e79739992b14)
+
+
+
+![Screenshot from 2024-11-12 23-59-48](https://github.com/user-attachments/assets/4b0d1482-70b0-40f0-a9e5-0497306d342c)
+
+
+
+![Screenshot from 2024-11-13 00-01-15](https://github.com/user-attachments/assets/e6952486-c73a-436b-b6bb-85132235ed2f)
+
+Calculation of Flop Ratio and DFF % from synthesis statistics report file
+```
+Flop Ratio = 1613/14876 = 0.108429685
+    Percentage of Flip Flops = 0.108429685 ∗ 100 = 10.84296854%
+```
+
+##  Day2: Good Floorpan vs Bad Floorplan and Introduction to Library Cell
 
 
 
@@ -2919,9 +2986,6 @@ The total negative slack and worst negative slacks are provided in the detailed 
 
 
 </details>
-
-
-
 
 
 
