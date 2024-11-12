@@ -3042,8 +3042,14 @@ Screenshots of floorplan def in magic
 ![Screenshot from 2024-11-13 00-32-32](https://github.com/user-attachments/assets/58d5ce1c-4631-45ac-b897-ad9cd4a2627f)
 
 
+Equidistant placement of ports
+![Screenshot from 2024-11-13 00-48-45](https://github.com/user-attachments/assets/a7898ea3-916e-4929-a4e5-0cd2da7724fd)
 
 
+Port layer as set through config.tcl
+
+
+![Screenshot from 2024-11-13 00-58-57](https://github.com/user-attachments/assets/112663e6-9344-484d-9225-768e781283b0)
 
 
 
