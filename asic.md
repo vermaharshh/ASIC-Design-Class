@@ -3221,8 +3221,7 @@ plot y vs time a
 
 ![Screenshot from 2024-11-13 20-08-56](https://github.com/user-attachments/assets/e4f79b0e-dabd-4c25-950d-760c0f923864)
 
-
-![Screenshot from 2024-11-13 20-09-51](https://github.com/user-attachments/assets/28e30ce9-bf60-4cbc-8ec9-080bd110dc7d)
+![Screenshot from 2024-11-13 23-08-42](https://github.com/user-attachments/assets/cd6566aa-0bf9-42de-acfe-d8a896f68092)
 
 
 Using this transient response, we will now characterize the cell's slew rate and propagation delay:
@@ -3278,6 +3277,17 @@ ls -al
 gvim .magicrc
 magic -d XR &
 ```
+
+
+![Screenshot from 2024-11-13 23-13-16](https://github.com/user-attachments/assets/b0d236a9-0d4a-464b-84e8-8a5c3c6d93c5)
+
+Screenshot of .magicrc file
+
+![Screenshot from 2024-11-13 23-15-39](https://github.com/user-attachments/assets/4b0d87c6-1a62-46b8-bba6-fc7efb0c33e7)
+
+
+
+
 
 
 ![WhatsApp Image 2024-11-13 at 20 20 39](https://github.com/user-attachments/assets/f33ac531-6a4d-4057-9e76-74b9af537f9e)
