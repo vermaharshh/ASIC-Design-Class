@@ -3096,6 +3096,144 @@ exit # Exit from OpenLANE flow docker sub-system
 ```
 
 
+ # Day3: Design Library Cell Using Magic Layout and Cell characterization
+
+Tasks:
+```
+    Clone custom inverter standard cell design from github repository: Standard cell design and characterization using OpenLANE flow.
+    Load the custom inverter layout in magic and explore.
+    Spice extraction of inverter in magic.
+    Editing the spice model file for analysis through simulation.
+    Post-layout ngspice simulations.
+    Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
+```
+
+    Clone custom inverter standard cell design from github repository
+
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Clone the repository with custom inverter design
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+# Change into repository directory
+cd vsdstdcelldesign
+
+# Copy magic tech file to the repo directory for easy access
+cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech .
+
+# Check contents whether everything is present
+ls
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+
+
+![Screenshot from 2024-11-13 18-12-35](https://github.com/user-attachments/assets/c434ed7a-2353-454a-952a-562dc3265100)
+
+
+Load the custom inverter layout in magic and explore.
+
+Screenshot of custom inverter layout in magic
+
+![Screenshot from 2024-11-13 18-14-53](https://github.com/user-attachments/assets/864cc391-3998-4ebf-bc7e-44ce2e401976)
+
+
+nmos, pmos identified
+
+![Screenshot from 2024-11-13 18-16-18](https://github.com/user-attachments/assets/30a323e7-80fe-4a6c-ad1b-a251b870c585)
+
+
+Output Y connectivity to PMOS and NMOS drain verified
+
+![Screenshot from 2024-11-13 18-18-08](https://github.com/user-attachments/assets/fa51ff92-10d4-4f0d-bf31-0b52f566908e)
+
+PMOS source connectivity to VDD (here VPWR) verified
+
+
+![Screenshot from 2024-11-13 18-18-58](https://github.com/user-attachments/assets/900d2370-142f-4077-b327-7b929028e7e2)
+
+NMOS source connectivity to VSS (here VGND) verified
+
+
+![Screenshot from 2024-11-13 18-22-05](https://github.com/user-attachments/assets/a8381a1c-ee9f-4d6b-89c7-8ca401c2a9cc)
+
+Deleting necessary layout part to see DRC error
+
+![Screenshot from 2024-11-13 18-26-19](https://github.com/user-attachments/assets/b795edd9-ca61-416e-9f7d-744395394ad4)
+
+
+Spice extraction of inverter in magic.
+
+Commands for spice extraction of the custom inverter layout to be used in tkcon window of magic
+```
+# Check current directory
+pwd
+
+# Extraction command to extract to .ext format
+extract all
+
+# Before converting ext to spice this command enable the parasitic extraction also
+ext2spice cthresh 0 rthresh 0
+
+# Converting to ext to spice
+ext2spice
+```
+Screenshot of tkcon window after running above commands
+
+![Screenshot from 2024-11-13 18-27-45](https://github.com/user-attachments/assets/d666df1e-dc06-47c5-85eb-c8c247791113)
+
+
+Screenshot of created spice file
+
+
+
+![Screenshot from 2024-11-13 19-17-11](https://github.com/user-attachments/assets/f4f38343-a6ca-4ee6-83ee-2ad9aaf2b9cf)
+
+
+
+
+Simulate the spice netlist
+```
+ngspice sky130_inv.spice
+```
+
+
+
+
+
+
+
+
+Screenshot of generated plot
+
+![WhatsApp Image 2024-11-13 at 19 52 34](https://github.com/user-attachments/assets/2258abe7-b13c-40d5-b29b-35bec6b3d444)
+
+Using this transient response, we will now characterize the cell's slew rate and propagation delay:
+Rise Transition: Time taken for the output to rise from 20% to 80% of max value Fall Transition: Time taken for the output to fall from 80% to 20% of max value Cell Rise delay: difference in time(50% output rise) to time(50% input fall) Cell Fall delay: difference in time(50% output fall) to time(50% input rise)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
