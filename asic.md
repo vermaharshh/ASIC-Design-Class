@@ -3052,6 +3052,59 @@ Port layer as set through config.tcl
 ![Screenshot from 2024-11-13 00-58-57](https://github.com/user-attachments/assets/112663e6-9344-484d-9225-768e781283b0)
 
 
+Decap Cells and Tap Cells
+
+![WhatsApp Image 2024-11-13 at 16 56 20](https://github.com/user-attachments/assets/c2be0507-c0d3-4d08-bd78-3c0eb1cd9ef0)
+
+Diagonally equidistant Tap cells
+
+cell in columns of different are diagoanlly equidistant
+
+![Screenshot from 2024-11-13 17-01-01](https://github.com/user-attachments/assets/3ec779fe-f189-4f38-a5b2-5e3d559a396c)
+
+Unplaced standard cells at the origin
+
+![Screenshot from 2024-11-13 17-05-58](https://github.com/user-attachments/assets/7de971f3-aa4e-48dc-98df-aadccebfe7f1)
+
+
+    Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs. Command to run placement
+
+# Congestion aware placement by default
+```
+run_placement
+```
+
+
+![Screenshot from 2024-11-13 17-11-41](https://github.com/user-attachments/assets/6277415e-c4c3-4650-b302-0e597666dde0)
+
+To view the placement in magic:
+
+![Screenshot from 2024-11-13 17-15-40](https://github.com/user-attachments/assets/3f3b2490-bdaf-438e-89d7-442d28aa4342)
+
+
+![WhatsApp Image 2024-11-13 at 17 19 44](https://github.com/user-attachments/assets/4f17d52c-e1cb-43de-8af3-c803a4daabee)
+
+
+
+![WhatsApp Image 2024-11-13 at 17 20 13](https://github.com/user-attachments/assets/3bf16411-9a80-44fe-8b25-990d3fc320f2)
+
+
+Commands to exit from current run
+```
+exit # Exit from OpenLANE flow
+exit # Exit from OpenLANE flow docker sub-system
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
