@@ -3126,41 +3126,50 @@ cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/
 ls
 
 # Command to open custom inverter layout in magic
-magic -T sky130A.tech sky130_inv.mag &
+magic -T sky130A.tech sky130_harinv.mag &
+
+![Screenshot from 2024-11-13 22-18-00](https://github.com/user-attachments/assets/fb569717-a21a-4fb3-89fa-3820f94ff890)
 
 
-![Screenshot from 2024-11-13 18-12-35](https://github.com/user-attachments/assets/c434ed7a-2353-454a-952a-562dc3265100)
 
 
 Load the custom inverter layout in magic and explore.
 
 Screenshot of custom inverter layout in magic
+![Screenshot from 2024-11-13 22-18-46](https://github.com/user-attachments/assets/9ae595ae-80d3-4543-9397-caa4e88432e8)
 
-![Screenshot from 2024-11-13 18-14-53](https://github.com/user-attachments/assets/864cc391-3998-4ebf-bc7e-44ce2e401976)
 
 
 nmos, pmos identified
 
-![Screenshot from 2024-11-13 18-16-18](https://github.com/user-attachments/assets/30a323e7-80fe-4a6c-ad1b-a251b870c585)
+
+![Screenshot from 2024-11-13 22-23-20](https://github.com/user-attachments/assets/cb2b33ae-6901-4369-8a8a-72c29c41296f)
+
+
+
+![Screenshot from 2024-11-13 22-22-49](https://github.com/user-attachments/assets/a6373a03-670b-4110-9d93-34fa588ea8cf)
+
 
 
 Output Y connectivity to PMOS and NMOS drain verified
 
-![Screenshot from 2024-11-13 18-18-08](https://github.com/user-attachments/assets/fa51ff92-10d4-4f0d-bf31-0b52f566908e)
+![Screenshot from 2024-11-13 22-24-27](https://github.com/user-attachments/assets/1a384b6e-c8fa-4f87-a038-22ba49dfeea9)
+
+
 
 PMOS source connectivity to VDD (here VPWR) verified
+![Screenshot from 2024-11-13 22-26-05](https://github.com/user-attachments/assets/f3affaf3-f3bd-4547-bd63-8b1d38402447)
 
-
-![Screenshot from 2024-11-13 18-18-58](https://github.com/user-attachments/assets/900d2370-142f-4077-b327-7b929028e7e2)
 
 NMOS source connectivity to VSS (here VGND) verified
+![Screenshot from 2024-11-13 22-27-27](https://github.com/user-attachments/assets/23ceabc5-5df6-4d62-a7ff-b0aa20837722)
 
 
-![Screenshot from 2024-11-13 18-22-05](https://github.com/user-attachments/assets/a8381a1c-ee9f-4d6b-89c7-8ca401c2a9cc)
 
 Deleting necessary layout part to see DRC error
+![Screenshot from 2024-11-13 22-33-39](https://github.com/user-attachments/assets/3428113d-bef7-4bb2-8930-9faf4ec333dd)
 
-![Screenshot from 2024-11-13 18-26-19](https://github.com/user-attachments/assets/b795edd9-ca61-416e-9f7d-744395394ad4)
+
 
 
 Spice extraction of inverter in magic.
@@ -3188,8 +3197,6 @@ Screenshot of created spice file
 
 
 ![Screenshot from 2024-11-13 20-05-11](https://github.com/user-attachments/assets/468368ea-e88d-45c9-8b1b-25c4c0cff9f5)
-
-
 
 
 
