@@ -3425,10 +3425,42 @@ Condition 1 verified
 ![Screenshot from 2024-11-14 00-58-25](https://github.com/user-attachments/assets/286df697-6dc9-4a0c-b111-e712eb25cff1)
 
 Condition 2 verified
-H o r i z o n t a l   t r a c k   p i t c h = 0.58   u m 
+
 
 ![Screenshot from 2024-11-14 01-01-21](https://github.com/user-attachments/assets/ba6008a0-b401-4299-adea-a6f64c45b35a)
- W i d t h   o f   s t a n d a r d   c e l l = 1.77   u m = 0.58 ∗ 3 
+
+Condition 3 verified
+![WhatsApp Image 2024-11-14 at 02 13 08](https://github.com/user-attachments/assets/17e8175c-bed4-4ec1-8add-3c203c792a84)
+
+
+2. Save the finalized layout with custom name and open it.
+
+Command for tkcon window to save the layout with custom name
+```
+# Command to save as
+save sky130_vsdinv.mag
+
+Command to open the newly saved layout
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_vsdinv.mag &
+```
+Screenshot of newly saved layout
+
+![Screenshot from 2024-11-14 02-33-21](https://github.com/user-attachments/assets/89ec0edb-ddb0-4303-aeb1-236c3cafc321)
+
+Screenshot of newly created lef file
+
+![Screenshot from 2024-11-14 02-34-48](https://github.com/user-attachments/assets/bc631739-d04d-4f1b-b614-187c38425941)
+
+4. Copy the newly generated lef and associated required lib files to 'picorv32a' design 'src' directory.
+Commands to copy necessary files to 'picorv32a' design 'src' directory
+
+![Screenshot from 2024-11-14 02-47-02](https://github.com/user-attachments/assets/2457ea52-7cb2-4513-a79a-bdadbdb4c811)
+
+
+
+
 
 
 
