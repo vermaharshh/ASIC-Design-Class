@@ -3292,6 +3292,8 @@ Screenshot of .magicrc file
 
 ![WhatsApp Image 2024-11-13 at 20 20 39](https://github.com/user-attachments/assets/f33ac531-6a4d-4057-9e76-74b9af537f9e)
 
+![Screenshot from 2024-11-13 23-29-01](https://github.com/user-attachments/assets/7dba07bd-f0fa-44a8-860c-a982bc579493)
+
 Incorrectly implemented poly.9 simple rule correction
 
 Screenshot of poly rules
@@ -3332,12 +3334,74 @@ New commands inserted in sky130A.tech file to update drc
 ![Screenshot from 2024-11-13 22-01-13](https://github.com/user-attachments/assets/46be59f9-11c8-4269-a3e5-c5c86c114465)
 
 
+Commands to run in tkcon window
+
+# Loading updated tech file
+tech load sky130A.tech
+
+# Must re-run drc check to see updated drc errors
+drc check
+
+# Selecting region displaying the new errors and getting the error messages 
+drc why
+
+Screenshot of magic window with rule implemented
+
+Incorrectly implemented nwell.4 complex rule correction
+
+Screenshot of nwell rules
+
+Incorrectly implemented nwell.4 rule no drc violation even though no tap present in nwell
+
+New commands inserted in sky130A.tech file to update drc
+
+![Screenshot from 2024-11-14 00-07-27](https://github.com/user-attachments/assets/a2682127-36ff-41d6-b015-bf79c862a195)
 
 
 
+![Screenshot from 2024-11-14 00-17-36](https://github.com/user-attachments/assets/b606f159-c7bb-4741-8ead-f49aa7112aa9)
+
+Commands to run in tkcon window
+```
+tech load sky130A.tech
+drc style drc(full)
+drc check
+drc why
+```
+
+# Day 4 - Pre-layout timing analysis and importance of good clock tree 
 
 
 
+    Fix up small DRC errors and verify the design is ready to be inserted into our flow.
+
+    Save the finalized layout with custom name and open it.
+
+    Generate lef from the layout.
+
+    Copy the newly generated lef and associated required lib files to 'picorv32a' design 'src' directory.
+
+    Edit 'config.tcl' to change lib file and add the new extra lef into the openlane flow.
+
+    Run openlane flow synthesis with newly inserted custom inverter cell.
+
+    Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
+
+    Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR flow.
+
+    Do Post-Synthesis timing analysis with OpenSTA tool.
+
+    Make timing ECO fixes to remove all violations.
+
+    Replace the old netlist with the new netlist generated after timing ECO fix and implement the floorplan, placement and cts.
+
+    Post-CTS OpenROAD timing analysis.
+
+    Explore post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
+
+    Fix up small DRC errors and verify the design is ready to be inserted into our flow. Conditions to be verified before moving forward with custom designed cell layout:
+
+Condition 1: The input and output ports of the standard cell should lie on the intersection of the vertical and horizontal tracks. Condition 2: Width of the standard cell should be odd multiples of the horizontal track pitch. Condition 3: Height of the standard cell should be even multiples of the vertical track pitch. Commands to open the custom inverter layout
 
 
 
