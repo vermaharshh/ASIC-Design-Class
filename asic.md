@@ -3420,12 +3420,15 @@ Screenshot of commands run
 
 ![Screenshot from 2024-11-14 00-42-56](https://github.com/user-attachments/assets/eda9a89c-e1f4-4c17-8985-3ae97cce995d)
 
+Condition 1 verified
 
+![Screenshot from 2024-11-14 00-58-25](https://github.com/user-attachments/assets/286df697-6dc9-4a0c-b111-e712eb25cff1)
 
+Condition 2 verified
+H o r i z o n t a l   t r a c k   p i t c h = 0.58   u m 
 
-
-
-
+![Screenshot from 2024-11-14 01-01-21](https://github.com/user-attachments/assets/ba6008a0-b401-4299-adea-a6f64c45b35a)
+ W i d t h   o f   s t a n d a r d   c e l l = 1.77   u m = 0.58 ∗ 3 
 
 
 
