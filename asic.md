@@ -3187,8 +3187,8 @@ Screenshot of tkcon window after running above commands
 Screenshot of created spice file
 
 
+![Screenshot from 2024-11-13 20-05-11](https://github.com/user-attachments/assets/468368ea-e88d-45c9-8b1b-25c4c0cff9f5)
 
-![Screenshot from 2024-11-13 19-17-11](https://github.com/user-attachments/assets/f4f38343-a6ca-4ee6-83ee-2ad9aaf2b9cf)
 
 
 
@@ -3198,6 +3198,7 @@ Simulate the spice netlist
 ngspice sky130_inv.spice
 ```
 
+![Screenshot from 2024-11-13 20-07-54](https://github.com/user-attachments/assets/31f9402f-682a-468c-9312-be1b63df0eb5)
 
 
 
@@ -3206,31 +3207,98 @@ ngspice sky130_inv.spice
 
 
 Screenshot of generated plot
+```
+plot y vs time a
+```
 
-![WhatsApp Image 2024-11-13 at 19 52 34](https://github.com/user-attachments/assets/2258abe7-b13c-40d5-b29b-35bec6b3d444)
+
+![Screenshot from 2024-11-13 20-08-56](https://github.com/user-attachments/assets/e4f79b0e-dabd-4c25-950d-760c0f923864)
+
+
+![Screenshot from 2024-11-13 20-09-51](https://github.com/user-attachments/assets/28e30ce9-bf60-4cbc-8ec9-080bd110dc7d)
+
 
 Using this transient response, we will now characterize the cell's slew rate and propagation delay:
 Rise Transition: Time taken for the output to rise from 20% to 80% of max value Fall Transition: Time taken for the output to fall from 80% to 20% of max value Cell Rise delay: difference in time(50% output rise) to time(50% input fall) Cell Fall delay: difference in time(50% output fall) to time(50% input rise)
 
+Cell Characterization: Slew Rate and Propagation Delay
+
+To characterize the cell's transient response, we will measure its slew rate and propagation delay as follows:
+
+    Rise Transition
+    The time required for the output to rise from 20% to 80% of its maximum value.
+
+    Fall Transition
+    The time required for the output to fall from 80% to 20% of its maximum value.
+
+    Cell Rise Delay
+    The time difference between the input falling to 50% of its amplitude and the output rising to 50%.
+
+    Cell Fall Delay
+    The time difference between the input rising to 50% of its amplitude and the output falling to 50%.
+
+maxm value:3.3V
+
+20% screenshot image
 
 
+![WhatsApp Image 2024-11-13 at 20 14 09(1)](https://github.com/user-attachments/assets/b9e0bff8-7918-43b7-b7a0-28414ff5f19c)
+
+80% Screenshot
 
 
+![WhatsApp Image 2024-11-13 at 20 14 43](https://github.com/user-attachments/assets/ecdcbd87-bb39-4f0a-9501-834d8ab46008)
+
+50% Screenshot
+
+![WhatsApp Image 2024-11-13 at 20 15 16](https://github.com/user-attachments/assets/7f949fe5-e2ea-48fe-b05a-b2d1b5bca506)
 
 
+Rise Transition : 2.24638 - 2.18242 =  0.06396 ns = 63.96 ps
+Fall Transition : 4.0955 - 4.05536 =  0.0419 ns = 41.9 ps
+Cell Rise Delay : 2.21144 - 2.15008 = 0.06136 ns = 61.36 ps
+Cell Fall Delay : 4.07807 - 4.05 =0.02 ns = 20 ps
+
+Magic Tool options and DRC Rules:
+
+Go to home directory and run the below commands:
+```
+cd
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+tar xfz drc_tests.tgz
+cd drc_tests
+ls -al
+gvim .magicrc
+magic -d XR &
+```
 
 
+![WhatsApp Image 2024-11-13 at 20 20 39](https://github.com/user-attachments/assets/f33ac531-6a4d-4057-9e76-74b9af537f9e)
+
+Incorrectly implemented poly.9 simple rule correction
+
+Screenshot of poly rules
+
+Incorrectly implemented poly.9 rule no drc violation even though spacing < 0.48u
 
 
+![WhatsApp Image 2024-11-13 at 20 23 38](https://github.com/user-attachments/assets/c61528d9-b5fb-4ca4-80fa-44ad586bc3d6)
 
 
+Correction of Incorrectly Implemented poly.9 Rule
+The poly.9 rule was not implemented correctly, requiring a simple correction. Please refer to the screenshot of the poly rules for specific details on the intended rule structure and constraints.
+
+![Screenshot from 2024-11-13 20-34-34](https://github.com/user-attachments/assets/05819837-9360-4e3c-a327-14ba70c88e06)
+
+![WhatsApp Image 2024-11-13 at 20 36 53](https://github.com/user-attachments/assets/5b14b329-0621-41a8-9b79-fec41bd439e0)
 
 
-
-
-
-
-
+Run the commands in tkcon window:
+```
+tech load sky130A.tech
+drc check
+drc why
+```
 
 
 
