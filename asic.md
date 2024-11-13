@@ -3402,6 +3402,32 @@ drc why
     Fix up small DRC errors and verify the design is ready to be inserted into our flow. Conditions to be verified before moving forward with custom designed cell layout:
 
 Condition 1: The input and output ports of the standard cell should lie on the intersection of the vertical and horizontal tracks. Condition 2: Width of the standard cell should be odd multiples of the horizontal track pitch. Condition 3: Height of the standard cell should be even multiples of the vertical track pitch. Commands to open the custom inverter layout
+```
+
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+magic -T sky130A.tech sky130_harinv.mag &
+```
+Screenshot of tracks.info of sky130_fd_sc_hd
+
+![Screenshot from 2024-11-14 00-39-05](https://github.com/user-attachments/assets/851376d9-5d8f-4b3b-bfe1-bcba4af2ea3d)
+
+Commands for tkcon window to set grid as tracks of locali layer
+```
+help grid
+grid 0.46um 0.34um 0.23um 0.17um
+```
+Screenshot of commands run
+
+![Screenshot from 2024-11-14 00-42-56](https://github.com/user-attachments/assets/eda9a89c-e1f4-4c17-8985-3ae97cce995d)
+
+
+
+
+
+
+
+
+
 
 
 
