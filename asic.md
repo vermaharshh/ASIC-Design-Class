@@ -3301,8 +3301,18 @@ drc why
 ```
 
 
+![WhatsApp Image 2024-11-13 at 20 58 51](https://github.com/user-attachments/assets/3f153e96-6cab-4254-88d5-7595b73692e4)
 
 
+Incorrectly implemented difftap.2 simple rule correction
+
+Screenshot of difftap rules
+
+Incorrectly implemented difftap.2 rule no drc violation even though spacing < 0.42u
+
+New commands inserted in sky130A.tech file to update drc
+
+![Screenshot from 2024-11-13 22-01-13](https://github.com/user-attachments/assets/46be59f9-11c8-4269-a3e5-c5c86c114465)
 
 
 
