@@ -4263,6 +4263,12 @@ Screenshots of routing run
 ![1](https://github.com/user-attachments/assets/86703c23-d706-42c8-b44b-da8b18a8d6d9)
 
 
+![image](https://github.com/user-attachments/assets/9357f10a-157c-4951-813e-61426702cf6e)
+
+
+
+
+
 Commands to load routed def in magic in another terminal
 ```
 # Change directory to path containing routed def
