@@ -3393,13 +3393,16 @@ drc check
 # Selecting region displaying the new errors and getting the error messages 
 drc why
 
-Screenshot of magic window with rule implemented
 
 Incorrectly implemented nwell.4 complex rule correction
 
-Screenshot of nwell rules
 
 Incorrectly implemented nwell.4 rule no drc violation even though no tap present in nwell
+
+
+![image](https://github.com/user-attachments/assets/cd87ab75-7421-4bae-b6a6-c150ebd427b6)
+
+
 
 New commands inserted in sky130A.tech file to update drc
 
