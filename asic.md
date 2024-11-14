@@ -3854,15 +3854,37 @@ Screenshots of power distribution network run
 ![Screenshot from 2024-11-14 21-47-55](https://github.com/user-attachments/assets/0d8bbf9c-9153-4374-840c-f976a621d31f)
 
 Commands to load PDN def in magic in another terminal
+```
+# Change directory to path containing generated PDN def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-11_16-09/tmp/floorplan/
+
+# Command to load the PDN def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 14-pdn.def &
+```
 
 
 
+![Screenshot from 2024-11-15 00-10-22](https://github.com/user-attachments/assets/55910f9e-c6de-40fb-8a1b-8ab451e7e552)
 
 
+![Screenshot from 2024-11-15 00-22-38](https://github.com/user-attachments/assets/0e833d9e-d5a1-46be-936c-6cc55a567a9e)
 
+![Screenshot from 2024-11-15 00-23-54](https://github.com/user-attachments/assets/ba1caebf-d5f8-40b4-a7b0-73128b3c305d)
 
+Perfrom detailed routing using TritonRoute and explore the routed layout.
 
+Command to perform routing
+```
+# Check value of 'CURRENT_DEF'
+echo $::env(CURRENT_DEF)
 
+# Check value of 'ROUTING_STRATEGY'
+echo $::env(ROUTING_STRATEGY)
+
+# Command for detailed route using TritonRoute
+run_routing
+```
+Screenshots of routing run
 
 
 
