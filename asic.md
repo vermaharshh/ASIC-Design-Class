@@ -3475,7 +3475,11 @@ Condition 2 verified
 ![Screenshot from 2024-11-14 01-01-21](https://github.com/user-attachments/assets/ba6008a0-b401-4299-adea-a6f64c45b35a)
 
 Condition 3 verified
-![WhatsApp Image 2024-11-14 at 02 13 08](https://github.com/user-attachments/assets/17e8175c-bed4-4ec1-8add-3c203c792a84)
+
+
+
+![WhatsApp Image 2024-11-15 at 00 54 38](https://github.com/user-attachments/assets/1ce710a9-59cf-4c07-981b-eac7a394c02f)
+
 
 
 2. Save the finalized layout with custom name and open it.
