@@ -3665,6 +3665,63 @@ Commands run final screenshot
 
 Newly created pre_sta.conf for STA analysis in openlane directory
 
+![Screenshot from 2024-11-14 04-18-43](https://github.com/user-attachments/assets/9daf0839-8329-4ae4-92f7-31721db6449b)
+
+Newly created my_base.sdc for STA analysis in openlane/designs/picorv32a/src directory based on the file openlane/scripts/base.sdc
+
+![Screenshot from 2024-11-14 04-25-07](https://github.com/user-attachments/assets/f12b6a7d-e57c-4c51-a7c8-efe6ac598557)
+
+
+Commands to run STA in another terminal
+```
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Command to invoke OpenSTA tool with script
+sta pre_sta.conf
+```
+Screenshots of commands run
+
+
+![WhatsApp Image 2024-11-14 at 04 48 26](https://github.com/user-attachments/assets/daeaf9db-df5c-47c8-8f68-b4761cab20df)
+
+![WhatsApp Image 2024-11-14 at 04 49 07](https://github.com/user-attachments/assets/703fe25f-c43f-41d2-a9ec-119bfd11386a)
+
+We now try to optimise synthesis.
+
+Go to new terminal and run the follwoing commands:
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+docker
+./flow.tcl -interactive
+prep -design picorv32a -tag 25-03_18-52 -overwrite
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+set ::env(SYNTH_SIZING) 1
+set ::env(SYNTH_MAX_FANOUT) 4
+echo $::env(SYNTH_DRIVING_CELL)
+run_synthesis
+```
+
+![WhatsApp Image 2024-11-14 at 04 56 52](https://github.com/user-attachments/assets/dbf24804-2309-434c-a68d-841cc1984ee0)
+
+Commands to run STA:
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+sta pre_sta.conf
+```
+
+![WhatsApp Image 2024-11-14 at 04 59 54](https://github.com/user-attachments/assets/53a35fc8-1164-4bab-a7e7-b9e9f85f5dc6)
+
+
+![WhatsApp Image 2024-11-14 at 05 00 20](https://github.com/user-attachments/assets/e9bfa9ce-ae07-4284-b0a1-feeef6e8953f)
+
+
+
+
+
+
+
 
 
 
