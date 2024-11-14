@@ -3385,14 +3385,6 @@ drc why
 
 
 
-Incorrectly implemented difftap.2
-
-
-
-![Screenshot from 2024-11-14 23-18-56](https://github.com/user-attachments/assets/91debc22-150e-43e8-a811-d667a47c933e)
-
-
-
 
 New commands inserted in sky130A.tech file to update drc
 
@@ -3428,6 +3420,16 @@ New commands inserted in sky130A.tech file to update drc
 
 
 ![Screenshot from 2024-11-14 00-17-36](https://github.com/user-attachments/assets/b606f159-c7bb-4741-8ead-f49aa7112aa9)
+
+
+Incorrectly implemented difftap.2
+
+
+![Screenshot from 2024-11-14 23-22-58](https://github.com/user-attachments/assets/20c405e8-ff06-4a46-802b-f09ff563be9b)
+
+
+
+
 
 
 
