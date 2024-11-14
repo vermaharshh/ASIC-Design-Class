@@ -3197,6 +3197,11 @@ Screenshot of created spice file
 
 ![Screenshot from 2024-11-13 20-05-11](https://github.com/user-attachments/assets/468368ea-e88d-45c9-8b1b-25c4c0cff9f5)
 
+![WhatsApp Image 2024-11-14 at 19 34 14](https://github.com/user-attachments/assets/c6108854-aeb2-4c6e-b7d4-5fd8ba6bc3e5)
+
+
+
+
 
 
 Simulate the spice netlist
@@ -3217,8 +3222,17 @@ Screenshot of generated plot
 plot y vs time a
 ```
 
+![Screenshot from 2024-11-14 19-40-38](https://github.com/user-attachments/assets/82840102-0e6f-42fb-9b37-995d6bd98f9b)
 
-![Screenshot from 2024-11-13 20-08-56](https://github.com/user-attachments/assets/e4f79b0e-dabd-4c25-950d-760c0f923864)
+
+
+
+
+
+
+
+
+
 
 ![Screenshot from 2024-11-13 23-08-42](https://github.com/user-attachments/assets/cd6566aa-0bf9-42de-acfe-d8a896f68092)
 
@@ -3245,24 +3259,48 @@ To characterize the cell's transient response, we will measure its slew rate and
 maxm value:3.3V
 
 20% screenshot image
+Rise transition time calculation Rise Transition Time = Time taken for output to rise to 80% − Time taken for output to rise to 20% 20% of output (3.3V) = 0.66V 20% of output (3.3V) = 2.64V
+
+![Screenshot from 2024-11-14 20-22-39](https://github.com/user-attachments/assets/c5f886d9-3ed8-4eeb-bda5-2cf918051174)
 
 
-![WhatsApp Image 2024-11-13 at 20 14 09(1)](https://github.com/user-attachments/assets/b9e0bff8-7918-43b7-b7a0-28414ff5f19c)
 
 80% Screenshot
 
+![Screenshot from 2024-11-14 20-26-53](https://github.com/user-attachments/assets/c740fac5-fd5b-413d-a9b8-24367efed084)
 
-![WhatsApp Image 2024-11-13 at 20 14 43](https://github.com/user-attachments/assets/ecdcbd87-bb39-4f0a-9501-834d8ab46008)
+Rise Transition Time = 2.2394 - 2.1803 = 0.05639 ns = 56.39 ps
+
+Fall Transition Time = Time taken for output to fall to 80% − Time taken for output to fall to 20% 20% of output (3.3V) = 0.66V 20% of output (3.3V) = 2.64V
+
+20% Screenshots
+
+![Screenshot from 2024-11-14 20-28-24](https://github.com/user-attachments/assets/f9baa042-8035-4df5-ab68-ec793a7b8543)
+
+
+80% Screenshots
+
+![Screenshot from 2024-11-14 20-29-30](https://github.com/user-attachments/assets/73b663b0-93f2-4227-bf2a-0b72550c63a5)
+
+
+Fall Transition Time = 4.09266 - 4.05061 = 0.04205 ns = 42.05 ps
+
+Rise Cell Delay Calculation Rise cell delay = Time taken by output to rise to 50% − Time taken by input to fall to 50% 50 % of 3.3V = 1.65V
+
 
 50% Screenshot
 
-![WhatsApp Image 2024-11-13 at 20 15 16](https://github.com/user-attachments/assets/7f949fe5-e2ea-48fe-b05a-b2d1b5bca506)
+
+![Screenshot from 2024-11-14 20-31-54](https://github.com/user-attachments/assets/2db60464-6ef4-45e5-b8e5-a1ace8d793de)
+
+Rise cell delay = 2.20667 - 2.15061 = 0.05599 ns = 55.99 ps
+
+Fall Cell Delay Calculation Fall cell delay = Time taken by output to fall to 50% − Time taken by input to rise to 50% of 3.3V = 1.65V
 
 
-Rise Transition : 2.24638 - 2.18242 =  0.06396 ns = 63.96 ps
-Fall Transition : 4.0955 - 4.05536 =  0.0419 ns = 41.9 ps
-Cell Rise Delay : 2.21144 - 2.15008 = 0.06136 ns = 61.36 ps
-Cell Fall Delay : 4.07807 - 4.05 =0.02 ns = 20 ps
+![Screenshot from 2024-11-14 20-35-41](https://github.com/user-attachments/assets/57139420-e3ab-4583-9c4d-efc7791c85a6)
+
+Fall cell delay = 4.07494 - 4.04966 = 0.02528 ns = 25.28 ps
 
 Magic Tool options and DRC Rules:
 
@@ -3322,6 +3360,17 @@ drc why
 ![WhatsApp Image 2024-11-13 at 20 58 51](https://github.com/user-attachments/assets/3f153e96-6cab-4254-88d5-7595b73692e4)
 
 
+![WhatsApp Image 2024-11-14 at 20 41 12](https://github.com/user-attachments/assets/e4d13aaf-17dc-4597-8d15-611142530f63)
+
+
+
+![WhatsApp Image 2024-11-14 at 20 42 05](https://github.com/user-attachments/assets/cfdebcc9-68d8-48fd-ae6e-584b31186419)
+
+![WhatsApp Image 2024-11-14 at 20 42 46](https://github.com/user-attachments/assets/452b6703-cfa6-4156-a8c0-d744b344b9d8)
+
+
+
+
 Incorrectly implemented difftap.2 simple rule correction
 
 Screenshot of difftap rules
@@ -3360,13 +3409,7 @@ New commands inserted in sky130A.tech file to update drc
 
 ![Screenshot from 2024-11-14 00-17-36](https://github.com/user-attachments/assets/b606f159-c7bb-4741-8ead-f49aa7112aa9)
 
-Commands to run in tkcon window
-```
-tech load sky130A.tech
-drc style drc(full)
-drc check
-drc why
-```
+
 
 # Day 4 - Pre-layout timing analysis and importance of good clock tree 
 
