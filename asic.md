@@ -3480,12 +3480,12 @@ Condition 3 verified
 Command for tkcon window to save the layout with custom name
 ```
 # Command to save as
-save sky130_vsdinv.mag
+save sky130_harinv.mag
 
 Command to open the newly saved layout
 
 # Command to open custom inverter layout in magic
-magic -T sky130A.tech sky130_vsdinv.mag &
+magic -T sky130A.tech sky130_harinv.mag &
 ```
 Screenshot of newly saved layout
 
@@ -3666,6 +3666,11 @@ Command for tkcon window to view internal layers of cells
 expand
 ```
 Abutment of power pins with other cell from library clearly visible
+
+
+![WhatsApp Image 2024-11-14 at 15 00 25](https://github.com/user-attachments/assets/3e00436d-a20d-41a7-9156-d2bb31c7d22a)
+
+
 
 ![Screenshot from 2024-11-14 03-51-59](https://github.com/user-attachments/assets/de85569e-6971-4968-b29b-cb093828b495)
 
