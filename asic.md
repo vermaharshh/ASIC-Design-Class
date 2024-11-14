@@ -3685,7 +3685,11 @@ Screenshots of commands run
 
 ![WhatsApp Image 2024-11-14 at 04 48 26](https://github.com/user-attachments/assets/daeaf9db-df5c-47c8-8f68-b4761cab20df)
 
-![WhatsApp Image 2024-11-14 at 04 49 07](https://github.com/user-attachments/assets/703fe25f-c43f-41d2-a9ec-119bfd11386a)
+
+
+![WhatsApp Image 2024-11-14 at 05 00 20](https://github.com/user-attachments/assets/5cf1f02e-2247-434a-8cf0-01ed87d0a77e)
+
+
 
 We now try to optimise synthesis.
 
@@ -3703,7 +3707,10 @@ echo $::env(SYNTH_DRIVING_CELL)
 run_synthesis
 ```
 
-![WhatsApp Image 2024-11-14 at 04 56 52](https://github.com/user-attachments/assets/dbf24804-2309-434c-a68d-841cc1984ee0)
+
+
+![WhatsApp Image 2024-11-14 at 05 12 37 (1)](https://github.com/user-attachments/assets/afa29e9e-8b8b-4d65-a2cb-432f23914ac4)
+
 
 Commands to run STA:
 ```
@@ -3711,14 +3718,17 @@ cd Desktop/work/tools/openlane_working_dir/openlane
 sta pre_sta.conf
 ```
 
-![WhatsApp Image 2024-11-14 at 04 59 54](https://github.com/user-attachments/assets/53a35fc8-1164-4bab-a7e7-b9e9f85f5dc6)
+![WhatsApp Image 2024-11-14 at 04 59 54](https://github.com/user-attachments/assets/d218ba5e-0df2-4419-88df-395e124aaa3e)
 
 
 ![WhatsApp Image 2024-11-14 at 05 00 20](https://github.com/user-attachments/assets/e9bfa9ce-ae07-4284-b0a1-feeef6e8953f)
 
 
+Basic timing ECO
 
+NOR gate of drive strength 2 is driving 5 fanouts
 
+![WhatsApp Image 2024-11-14 at 15 48 43](https://github.com/user-attachments/assets/14bb5ff2-d3ee-4b9b-b3e4-d38175f4a93f)
 
 
 
