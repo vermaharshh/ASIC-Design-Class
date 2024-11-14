@@ -2964,6 +2964,20 @@ exit
 
 ![Screenshot from 2024-11-13 00-01-15](https://github.com/user-attachments/assets/e6952486-c73a-436b-b6bb-85132235ed2f)
 
+
+![Screenshot from 2024-11-15 04-34-22](https://github.com/user-attachments/assets/249110bf-3512-42c1-8667-5298f5122922)
+
+
+![Screenshot from 2024-11-15 04-35-47](https://github.com/user-attachments/assets/1b7916c9-1d63-4b84-88a9-35331762afba)
+
+
+
+
+
+
+
+
+
 Calculation of Flop Ratio and DFF % from synthesis statistics report file
 ```
 Flop Ratio = 1613/14876 = 0.108429685
