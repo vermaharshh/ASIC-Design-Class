@@ -4241,25 +4241,106 @@ Screenshots of routing run
 
 
 
+![1](https://github.com/user-attachments/assets/86703c23-d706-42c8-b44b-da8b18a8d6d9)
+
+
+Commands to load routed def in magic in another terminal
+```
+# Change directory to path containing routed def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-11_22-02/results/routing/
+
+# Command to load the routed def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
+```
+Screenshots of routed def
+
+
+![2](https://github.com/user-attachments/assets/8289d6a6-db01-47dd-b185-c979e52d8c42)
 
 
 
 
+![3](https://github.com/user-attachments/assets/b8a6f0af-b1d8-42e2-8af5-df2f64869461)
 
 
 
 
+![4](https://github.com/user-attachments/assets/70628c70-eee1-42d1-8f97-94a42acc0290)
+
+Screenshot of fast route guide present in openlane/designs/picorv32a/runs/26-03_08-45/tmp/routing directory
+
+
+
+![5](https://github.com/user-attachments/assets/e71666b8-b016-47dd-89c1-7f011ec8aac6)
+
+Post-Route parasitic extraction using SPEF extractor.
+
+Commands for SPEF extraction using external tool
+```
+# Change directory
+cd Desktop/work/tools/SPEF_EXTRACTOR
+
+# Command extract spef
+python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-11_22-02/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-11_22-02/results/routing/picorv32a.def
+```
+4. Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
+
+Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrated OpenSTA in OpenROAD
+```
+# Command to run OpenROAD tool
+openroad
+
+# Reading lef file
+read_lef /openLANE_flow/designs/picorv32a/runs/14-11_22-02/tmp/merged.lef
+
+# Reading def file
+read_def /openLANE_flow/designs/picorv32a/runs/14-11_22-02/results/routing/picorv32a.def
+
+# Creating an OpenROAD database to work with
+write_db pico_route.db
+
+# Loading the created database in OpenROAD
+read_db pico_route.db
+
+# Read netlist post CTS
+read_verilog /openLANE_flow/designs/picorv32a/runs/14-11_22-02/results/synthesis/picorv32a.synthesis_preroute.v
+
+# Read library for design
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+# Link design and library
+link_design picorv32a
+
+# Read in the custom sdc we created
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+# Setting all cloks as propagated clocks
+set_propagated_clock [all_clocks]
+
+# Read SPEF
+read_spef /openLANE_flow/designs/picorv32a/runs/14-11_22-02/results/routing/picorv32a.spef
+
+# Generating custom timing report
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+# Exit to OpenLANE flow
+exit
+```
+Screenshots of commands run and timing report generated
 
 
 
 
+![6](https://github.com/user-attachments/assets/df411ed5-aef9-4338-80a3-9a30d95f1c13)
 
 
+![7](https://github.com/user-attachments/assets/663521e9-4aa0-4abb-904b-2dc739fe1ca1)
 
 
+![8](https://github.com/user-attachments/assets/8d389f9f-412f-4637-889f-d4eb52294c15)
 
 
-
+![9](https://github.com/user-attachments/assets/4b0183e1-671f-40cd-8b7f-89f9fc0171e6)
 
 
 
