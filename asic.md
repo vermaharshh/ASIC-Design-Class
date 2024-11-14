@@ -3084,9 +3084,8 @@ To view the placement in magic:
 
 ![WhatsApp Image 2024-11-13 at 17 19 44](https://github.com/user-attachments/assets/4f17d52c-e1cb-43de-8af3-c803a4daabee)
 
+![image](https://github.com/user-attachments/assets/bbf8aab8-cb49-464c-acb2-de043d77c6d8)
 
-
-![WhatsApp Image 2024-11-13 at 17 20 13](https://github.com/user-attachments/assets/3bf16411-9a80-44fe-8b25-990d3fc320f2)
 
 
 Commands to exit from current run
