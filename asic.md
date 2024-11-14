@@ -3385,11 +3385,14 @@ drc why
 
 
 
-Incorrectly implemented difftap.2 simple rule correction
+Incorrectly implemented difftap.2
 
-Screenshot of difftap rules
 
-Incorrectly implemented difftap.2 rule no drc violation even though spacing < 0.42u
+
+![Screenshot from 2024-11-14 23-18-56](https://github.com/user-attachments/assets/91debc22-150e-43e8-a811-d667a47c933e)
+
+
+
 
 New commands inserted in sky130A.tech file to update drc
 
