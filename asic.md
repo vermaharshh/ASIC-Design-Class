@@ -4510,6 +4510,48 @@ By following these steps, we can set up the VSDBabySoC design for RTL-to-GDS imp
 
 ![image](https://github.com/user-attachments/assets/31d5795b-465a-42fc-baa0-008ae23cd13e)
 
+## Clock Tree Synthesis
+
+```
+sudo make DESIGN_CONFIG=./designs/sky130hd/VSDBabySoC/config.mk cts
+```
+![image](https://github.com/user-attachments/assets/bce2b54a-ebc5-4948-93b5-206effff3560)
+
+![image](https://github.com/user-attachments/assets/cd0c6c01-be31-498e-ae64-e4e1951eea06)
+
+![image](https://github.com/user-attachments/assets/d5cc1187-d43b-41e3-a2a1-a3fd7f0a1313)
+
+![image](https://github.com/user-attachments/assets/dfe99814-4bf7-42a6-833c-7c2913e33e3e)
+
+![image](https://github.com/user-attachments/assets/b8fa36a9-3949-483a-ba87-55ee678da022)
+
+For Final Layout
+```
+make gui_final
+```
+
+![image](https://github.com/user-attachments/assets/4bbbfeb6-a855-454e-b86d-6e35769f8174)
+
+![image](https://github.com/user-attachments/assets/6b9f2faf-008b-4e05-b903-20622a6cc7b5)
+
+![image](https://github.com/user-attachments/assets/ed5e9a97-1844-4b17-9512-739dd4fa8c53)
+
+![image](https://github.com/user-attachments/assets/3373dcff-d9fc-4ecc-8532-9a169c66ff6b)
+
+![image](https://github.com/user-attachments/assets/53d02e96-8084-47e2-a06b-66337bcd8fbe)
+
+To give the GDS file in the klayout type the following commands
+
+```
+ klayout -e -nn ./platforms/nangate45/FreePDK45.lyt -l ./platforms/nangate45/FreePDK45.lyp ./results/nangate45/gcd/base/6_final.gds
+```
+
+![image](https://github.com/user-attachments/assets/e0da7d25-6e1b-49f5-aa7c-c1dc94a0f84d)
+
+
+
+
+
 
 
 
