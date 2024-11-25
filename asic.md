@@ -4549,8 +4549,10 @@ To give the GDS file in the klayout type the following commands
 ![image](https://github.com/user-attachments/assets/e0da7d25-6e1b-49f5-aa7c-c1dc94a0f84d)
 
 
+![image](https://github.com/user-attachments/assets/657f331f-4145-437e-ac73-96e3223c13e4)
 
 
+![image](https://github.com/user-attachments/assets/7ea4e566-8789-4423-952c-7cd85ebed5f6)
 
 
 
