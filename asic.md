@@ -4458,29 +4458,23 @@ By following these steps, we can set up the VSDBabySoC design for RTL-to-GDS imp
 
 
 
-![asic13](https://github.com/user-attachments/assets/a68b2a5e-b053-44af-95c3-17b5e4f6987b)
+![image](https://github.com/user-attachments/assets/9abd5623-d639-4c6d-ac3f-9a67ea213b32)
 
 
 
-![log1](https://github.com/user-attachments/assets/4a60b419-9ac4-4205-ab81-3f861488effd)
+![image](https://github.com/user-attachments/assets/1ca3d93c-244a-404e-834c-d2406fcbbb9a)
+
 
 
 ![asic14](https://github.com/user-attachments/assets/bcecf136-c247-412f-9d2c-4f196a4504d4)
 
 
-
-![asic15](https://github.com/user-attachments/assets/2f07354a-122b-40e9-a3a2-4f34ce7b9ed7)
-
+![image](https://github.com/user-attachments/assets/88c77ba1-a13b-4daf-990d-7cd38d825741)
 
 
 
-![asic16](https://github.com/user-attachments/assets/cf2bd19f-5afd-4eaf-b1a9-c462d11a5fdb)
+![image](https://github.com/user-attachments/assets/64010efa-4913-402b-a1cf-260a28d66c89)
 
-![asic17](https://github.com/user-attachments/assets/5b18876c-66fb-4467-b837-f0c0df6054f7)
-
-
-
-![asic18](https://github.com/user-attachments/assets/0ba280c7-e271-4ec2-b6f1-1c9098e73b83)
 
 
 ## Floorplan
@@ -4492,15 +4486,27 @@ By following these steps, we can set up the VSDBabySoC design for RTL-to-GDS imp
 
 ![image](https://github.com/user-attachments/assets/2d85a742-7c13-415c-9c60-89742e786ab7)
 
-![image](https://github.com/user-attachments/assets/ea0412c6-3661-448e-aecf-f91737bec17d)
+
+![asic19](https://github.com/user-attachments/assets/a1b0e01d-7cee-4c3b-9db5-374946cbd6b8)
+
+
 
 
 ![image](https://github.com/user-attachments/assets/0b360042-502c-4d4b-a3bc-5aaca95c4678)
 
 
-![image](https://github.com/user-attachments/assets/1fd81c7f-5ebe-47a7-8315-1f212cfac0b1)
 
-![image](https://github.com/user-attachments/assets/9fb97bb0-665c-474f-bd68-867297662e37)
+![asic20](https://github.com/user-attachments/assets/ec7e1782-f26b-4a0c-94e0-50ba3fcc2e97)
+
+
+
+
+![image](https://github.com/user-attachments/assets/5804588f-c49b-43dc-8d0a-f82980940578)
+
+
+
+
+
 
 ## Placement
 
