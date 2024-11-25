@@ -4374,6 +4374,172 @@ Screenshots of commands run and timing report generated
 
 
 
+<details>
+<summary> LAB 13 </summary>
+<br>
+
+# OpenRoad Physical Design:
+
+Cloning and Installing Dependencies
+
+To set up the environment, use the setup.sh script to install all necessary dependencies, including those required for OpenROAD.
+```
+git clone --recursive https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts
+cd OpenROAD-flow-scripts
+sudo ./setup.sh
+```
+
+![asic1](https://github.com/user-attachments/assets/ca833ad0-aefa-4ae3-be05-937190dd4520)
+
+![asic2](https://github.com/user-attachments/assets/d0095a21-bffb-4265-a313-635d204d4fab)
+
+
+
+![asic3](https://github.com/user-attachments/assets/e18d28b8-30b6-41df-8621-811880bdcb9e)
+
+![asic4](https://github.com/user-attachments/assets/ff8b8760-d167-432f-947e-d4f7781967c2)
+
+
+
+![asic5](https://github.com/user-attachments/assets/061a223f-f494-4e5d-9716-80b2ad304e2b)
+
+To view the final layout in the OpenROAD GUI, use the following command:
+```
+make gui_final
+```
+
+
+![asic6](https://github.com/user-attachments/assets/e8450108-180b-4f26-a023-4661afbd1d05)
+
+Automated RTL-to-GDS Flow for VSDBabySoC
+
+Follow these steps to set up the VSDBabySoC design in the OpenROAD-flow-scripts environment:
+
+    Create the Directory:
+    Navigate to OpenROAD-flow-scripts/flow/designs/sky130hd and create a new folder named vsdbabysoc.
+
+    Copy Required Files:
+    Transfer the following folders and their respective contents from the VSDBabySoC directory on the system to the newly created vsdbabysoc directory:
+        gds: Includes avsddac.gds and avsdpll.gds.
+        include: Contains sandpiper.vh, sandpiper_gen.vh, sp_default.vh, and sp_verilog.vh.
+        lef: Includes avsddac.lef and avsdpll.lef.
+        lib: Contains avsddac.lib and avsdpll.lib.
+
+    Add Constraints File:
+    Copy vsdbabysoc_synthesis.sdc to the vsdbabysoc directory.
+
+    Include Additional Configuration Files:
+    Transfer macro.cfg and pin_order.cfg from the VSDBabySoC folder to the same directory.
+
+    Prepare Macro Configuration:
+    Create a macro.cfg file in the vsdbabysoc directory with the required configuration details.
+
+By following these steps, we can set up the VSDBabySoC design for RTL-to-GDS implementation.
+
+![asic7](https://github.com/user-attachments/assets/2c051511-56d7-454b-b51d-880aeed4af2a)
+
+
+
+![asic8](https://github.com/user-attachments/assets/9e1d2c03-f184-4230-a78f-bfbf3f111015)
+
+
+![asic9](https://github.com/user-attachments/assets/8170f856-02a1-4a0f-bb47-58389df5c3cb)
+
+
+![asic10](https://github.com/user-attachments/assets/306c0dd5-7fb4-4990-bf55-942de6c9f6eb)
+
+
+
+![asic11](https://github.com/user-attachments/assets/73975864-e25f-4161-9d31-443e6fb6ab84)
+
+
+
+![asic12](https://github.com/user-attachments/assets/ecb90d72-178a-4147-a9e3-577541a95233)
+
+
+
+![asic13](https://github.com/user-attachments/assets/a68b2a5e-b053-44af-95c3-17b5e4f6987b)
+
+
+
+![log1](https://github.com/user-attachments/assets/4a60b419-9ac4-4205-ab81-3f861488effd)
+
+
+![asic14](https://github.com/user-attachments/assets/bcecf136-c247-412f-9d2c-4f196a4504d4)
+
+
+
+![asic15](https://github.com/user-attachments/assets/2f07354a-122b-40e9-a3a2-4f34ce7b9ed7)
+
+
+
+
+![asic16](https://github.com/user-attachments/assets/cf2bd19f-5afd-4eaf-b1a9-c462d11a5fdb)
+
+![asic17](https://github.com/user-attachments/assets/5b18876c-66fb-4467-b837-f0c0df6054f7)
+
+
+
+![asic18](https://github.com/user-attachments/assets/0ba280c7-e271-4ec2-b6f1-1c9098e73b83)
+
+
+## Floorplan
+
+
+![image](https://github.com/user-attachments/assets/0153ea74-3296-4fac-a251-3919a5559cde)
+
+![image](https://github.com/user-attachments/assets/9cd71d75-f401-4f91-8a78-2facabab6f62)
+
+![image](https://github.com/user-attachments/assets/2d85a742-7c13-415c-9c60-89742e786ab7)
+
+![image](https://github.com/user-attachments/assets/ea0412c6-3661-448e-aecf-f91737bec17d)
+
+
+![image](https://github.com/user-attachments/assets/0b360042-502c-4d4b-a3bc-5aaca95c4678)
+
+
+![image](https://github.com/user-attachments/assets/1fd81c7f-5ebe-47a7-8315-1f212cfac0b1)
+
+![image](https://github.com/user-attachments/assets/9fb97bb0-665c-474f-bd68-867297662e37)
+
+## Placement
+
+![image](https://github.com/user-attachments/assets/367cabd0-ee80-40ba-bf38-191770ebd7b4)
+
+![image](https://github.com/user-attachments/assets/a0605ae5-37fe-43ad-bf87-1edc619a0116)
+
+![image](https://github.com/user-attachments/assets/31d5795b-465a-42fc-baa0-008ae23cd13e)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</details>
+
+
 
 
 
