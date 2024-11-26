@@ -4544,6 +4544,32 @@ make gui_cts
 
 ![image](https://github.com/user-attachments/assets/722f515a-0571-48f8-947b-8e8cad4cfec5)
 
+![image](https://github.com/user-attachments/assets/4e6d8ff5-5ad3-4d81-a64b-e38623ac8b5d)
+
+The detailed routing file is as follows:-
+
+
+![image](https://github.com/user-attachments/assets/41036b4e-1574-46ca-a118-48ee261c4695)
+
+Merge File:
+
+![image](https://github.com/user-attachments/assets/8a4d7012-b7bd-4aeb-854d-109dfab05310)
+
+The final report.log file is as follows:-
+
+![image](https://github.com/user-attachments/assets/5557150f-552e-4be8-9916-e3148b34d85a)
+
+The synthesis statistics is as follows:
+
+![image](https://github.com/user-attachments/assets/f9175a63-598c-42c1-84a7-90a58a8186fe)
+
+
+
+final routing:
+
+![image](https://github.com/user-attachments/assets/e2210f06-9bb8-4715-a514-31bd387250aa)
+
+
 Heatmaps:
 
 ![image](https://github.com/user-attachments/assets/52b8fd17-e2bc-486f-b4a3-821a70d78184)
@@ -4553,6 +4579,9 @@ Heatmaps:
 ![image](https://github.com/user-attachments/assets/519f094c-7842-4f9d-9955-236c5b33bbe3)
 
 ![image](https://github.com/user-attachments/assets/3e5fd40f-afbd-4f3d-9981-bab15133a067)
+
+![image](https://github.com/user-attachments/assets/5a14564d-b973-48bd-b830-3507a008922c)
+
 
 QoR:
 
