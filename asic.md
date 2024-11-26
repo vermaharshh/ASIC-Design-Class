@@ -4544,10 +4544,23 @@ make gui_cts
 
 ![image](https://github.com/user-attachments/assets/722f515a-0571-48f8-947b-8e8cad4cfec5)
 
+Heatmaps:
+
+![image](https://github.com/user-attachments/assets/52b8fd17-e2bc-486f-b4a3-821a70d78184)
+
+![image](https://github.com/user-attachments/assets/890d7562-f2cc-45d8-a662-4679d1f0c1af)
+
+![image](https://github.com/user-attachments/assets/519f094c-7842-4f9d-9955-236c5b33bbe3)
+
+![image](https://github.com/user-attachments/assets/3e5fd40f-afbd-4f3d-9981-bab15133a067)
+
+QoR:
+
+![image](https://github.com/user-attachments/assets/f760b4d0-c2e7-4957-b82d-3e8f8d7f1ede)
 
 
 
-
+Routing
 ![image](https://github.com/user-attachments/assets/657f331f-4145-437e-ac73-96e3223c13e4)
 
 
