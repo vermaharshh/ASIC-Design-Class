@@ -4475,6 +4475,8 @@ By following these steps, we can set up the VSDBabySoC design for RTL-to-GDS imp
 
 ![image](https://github.com/user-attachments/assets/64010efa-4913-402b-a1cf-260a28d66c89)
 
+![image](https://github.com/user-attachments/assets/a31fc236-7533-44ee-afe0-f43e0541668f)
+
 
 
 ## Floorplan
@@ -4551,6 +4553,21 @@ The detailed routing file is as follows:-
 
 ![image](https://github.com/user-attachments/assets/41036b4e-1574-46ca-a118-48ee261c4695)
 
+Content of Constraint Files
+```
+set_units -time ns
+set PERIOD 10.25
+create_clock [get_pins {pll/CLK}] -name clk -period $PERIOD
+set_clock_uncertainty [expr 0.05 * $PERIOD] -setup [get_clocks clk]
+set_clock_uncertainty [expr 0.08 * $PERIOD] -hold [get_clocks clk]
+set_clock_transition [expr 0.05 * $PERIOD] [get_clocks clk]
+
+set_input_transition [expr $PERIOD * 0.08] [get_ports ENb_CP]
+set_input_transition [expr $PERIOD * 0.08] [get_ports ENb_VCO]
+set_input_transition [expr $PERIOD * 0.08] [get_ports REF]
+set_input_transition [expr $PERIOD * 0.08] [get_ports VCO_IN]
+set_input_transition [expr $PERIOD * 0.08] [get_ports VREFH]
+```
 Merge File:
 
 ![image](https://github.com/user-attachments/assets/8a4d7012-b7bd-4aeb-854d-109dfab05310)
@@ -4595,7 +4612,9 @@ Routing
 
 ![image](https://github.com/user-attachments/assets/7ea4e566-8789-4423-952c-7cd85ebed5f6)
 
-
+![image](https://github.com/user-attachments/assets/586e61fe-fc73-4d9e-a5f6-5ebcc1bdb0ad)
+which is same as that of RISC-V generated Heatmap
+Note: The IP macros pll and dac are not connected to the pdn network correctly.
 
 
 
