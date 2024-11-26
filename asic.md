@@ -4604,6 +4604,7 @@ QoR:
 
 ![image](https://github.com/user-attachments/assets/f760b4d0-c2e7-4957-b82d-3e8f8d7f1ede)
 
+![image](https://github.com/user-attachments/assets/a49a1dbe-df23-490b-a35d-f6243ca9c504)
 
 
 Routing
@@ -4612,10 +4613,7 @@ Routing
 
 ![image](https://github.com/user-attachments/assets/7ea4e566-8789-4423-952c-7cd85ebed5f6)
 
-![image](https://github.com/user-attachments/assets/c48a43b0-6267-47be-a49e-4a67d0d15055)
 
-which is same as that of RISC-V generated Heatmap
-Note: The IP macros pll and dac are not connected to the pdn network correctly.
 
 
 
