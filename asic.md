@@ -4503,56 +4503,49 @@ By following these steps, we can set up the VSDBabySoC design for RTL-to-GDS imp
 
 ![image](https://github.com/user-attachments/assets/5804588f-c49b-43dc-8d0a-f82980940578)
 
+![image](https://github.com/user-attachments/assets/334e1436-df1c-4a49-bdee-3ba218615184)
 
 
+![image](https://github.com/user-attachments/assets/08783787-6ed6-4913-8bd5-76901fca9fc4)
 
+![image](https://github.com/user-attachments/assets/fd4da382-a92f-4b98-b753-abdd36de9a75)
 
 
 ## Placement
 
-![image](https://github.com/user-attachments/assets/367cabd0-ee80-40ba-bf38-191770ebd7b4)
+![image](https://github.com/user-attachments/assets/a8b16f09-21a1-435f-88c3-e72ba0fc9eb1)
 
-![image](https://github.com/user-attachments/assets/a0605ae5-37fe-43ad-bf87-1edc619a0116)
+![image](https://github.com/user-attachments/assets/2bcefe01-6a99-4e55-ab70-db3594e3c21a)
 
-![image](https://github.com/user-attachments/assets/31d5795b-465a-42fc-baa0-008ae23cd13e)
+
+![image](https://github.com/user-attachments/assets/06e5125e-0bb2-4c5f-b892-40ed14c74119)
+
+![image](https://github.com/user-attachments/assets/04358760-b3c9-4c32-9c43-5cca90562959)
+
+
 
 ## Clock Tree Synthesis
 
 ```
 sudo make DESIGN_CONFIG=./designs/sky130hd/VSDBabySoC/config.mk cts
 ```
-![image](https://github.com/user-attachments/assets/bce2b54a-ebc5-4948-93b5-206effff3560)
+![image](https://github.com/user-attachments/assets/19deb7b7-c3e7-43d3-9057-4c8c449eaba3)
 
-![image](https://github.com/user-attachments/assets/cd0c6c01-be31-498e-ae64-e4e1951eea06)
 
-![image](https://github.com/user-attachments/assets/d5cc1187-d43b-41e3-a2a1-a3fd7f0a1313)
-
-![image](https://github.com/user-attachments/assets/dfe99814-4bf7-42a6-833c-7c2913e33e3e)
-
-![image](https://github.com/user-attachments/assets/b8fa36a9-3949-483a-ba87-55ee678da022)
-
-For Final Layout
+![image](https://github.com/user-attachments/assets/13a31545-97cf-4eae-82c1-ff9e433fe659)
 ```
-make gui_final
+make gui_cts
 ```
+![image](https://github.com/user-attachments/assets/2b2100a6-ac28-4587-b2e4-1b082b9f6cb3)
 
-![image](https://github.com/user-attachments/assets/4bbbfeb6-a855-454e-b86d-6e35769f8174)
 
-![image](https://github.com/user-attachments/assets/6b9f2faf-008b-4e05-b903-20622a6cc7b5)
+![image](https://github.com/user-attachments/assets/c1463caa-33eb-4171-8c77-b3b2b70945dd)
 
-![image](https://github.com/user-attachments/assets/ed5e9a97-1844-4b17-9512-739dd4fa8c53)
 
-![image](https://github.com/user-attachments/assets/3373dcff-d9fc-4ecc-8532-9a169c66ff6b)
+![image](https://github.com/user-attachments/assets/722f515a-0571-48f8-947b-8e8cad4cfec5)
 
-![image](https://github.com/user-attachments/assets/53d02e96-8084-47e2-a06b-66337bcd8fbe)
 
-To give the GDS file in the klayout type the following commands
 
-```
- klayout -e -nn ./platforms/nangate45/FreePDK45.lyt -l ./platforms/nangate45/FreePDK45.lyp ./results/nangate45/gcd/base/6_final.gds
-```
-
-![image](https://github.com/user-attachments/assets/e0da7d25-6e1b-49f5-aa7c-c1dc94a0f84d)
 
 
 ![image](https://github.com/user-attachments/assets/657f331f-4145-437e-ac73-96e3223c13e4)
