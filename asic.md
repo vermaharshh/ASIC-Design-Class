@@ -4612,7 +4612,8 @@ Routing
 
 ![image](https://github.com/user-attachments/assets/7ea4e566-8789-4423-952c-7cd85ebed5f6)
 
-![image](https://github.com/user-attachments/assets/586e61fe-fc73-4d9e-a5f6-5ebcc1bdb0ad)
+![image](https://github.com/user-attachments/assets/c48a43b0-6267-47be-a49e-4a67d0d15055)
+
 which is same as that of RISC-V generated Heatmap
 Note: The IP macros pll and dac are not connected to the pdn network correctly.
 
